@@ -41,3 +41,10 @@ Node.js 24. `npm ci`, затем `npm run dev` (серверная версия)
 ## Ограничения
 
 Новостная тональность — простой анализ слов, не причинная модель. Валютный сценарий — экстраполяция логарифмических доходностей, не валидированная прогнозная вероятность. Дивидендный календарь и персональные рекомендации не реализованы. Встроенные биржевые графики могут иметь задержку, требовать доступности стороннего источника или не поддерживать конкретную биржу. Никаких вымышленных котировок приложение не показывает.
+
+## Automatic updates and news ideas
+The visible app checks available data every 5 seconds, without manual refresh controls. Frankfurter publishes daily reference rates; five-second polling does not make them tick data. TradingView maintains its own quote stream with exchange-specific availability and delays. Candle resolution controls are above the chart; historical range controls are inside TradingView.
+
+The homepage rotates evidence-based news ideas every 8 seconds. The heuristic uses positive catalysts and subtracts negative articles from the last 72 hours. It is recalculated from available news, suppresses stale/future evidence and may return no picks. It does not evaluate entry prices or guarantee returns. Asset pages show associated RSS excerpts, positive/negative context and original article links.
+
+GitHub Actions rebuilds news every three hours (scheduled runs may be delayed by GitHub). The browser checks the published snapshot every five seconds; this is not live RSS delivery. Enable GitHub Pages with source GitHub Actions in repository Settings → Pages. The hosted site works without a running PC.
