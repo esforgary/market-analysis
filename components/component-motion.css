@@ -1,0 +1,47 @@
+/* Radix Presence waits for these exit animations before unmounting the portal. */
+.meridian-dialog-overlay[data-state="open"]{animation:meridian-overlay-in 340ms ease both}
+.meridian-dialog-overlay[data-state="closed"]{animation:meridian-overlay-out 240ms ease both}
+.meridian-dialog-content[data-state="open"]{animation:meridian-dialog-in 440ms cubic-bezier(.22,1,.36,1) both}
+.meridian-dialog-content[data-state="closed"]{animation:meridian-dialog-out 240ms cubic-bezier(.4,0,1,1) both}
+.meridian-dialog-overlay{backdrop-filter:blur(7px)}
+@keyframes meridian-overlay-in{from{opacity:0}to{opacity:1}}
+@keyframes meridian-overlay-out{from{opacity:1}to{opacity:0}}
+@keyframes meridian-dialog-in{from{opacity:0;transform:translateY(12px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes meridian-dialog-out{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(6px) scale(.985)}}
+
+.story-brief .smooth-disclosure{margin-top:12px;border-left:2px solid var(--line);padding-left:12px}
+.story-brief .smooth-disclosure-trigger{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:3px 0;text-align:left;background:transparent;color:var(--muted-foreground);font-size:11px;line-height:1.6}
+.story-brief .smooth-disclosure-trigger:hover{color:var(--accent-green)}
+.smooth-disclosure-trigger svg{transition:transform 360ms cubic-bezier(.22,1,.36,1)}
+.smooth-disclosure[data-open="true"] .smooth-disclosure-trigger svg{transform:rotate(180deg)}
+.smooth-disclosure-grid{display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows 400ms cubic-bezier(.22,1,.36,1),opacity 280ms ease,visibility 0s linear 400ms}
+.smooth-disclosure[data-open="true"] .smooth-disclosure-grid{grid-template-rows:1fr;opacity:1;visibility:visible;transition:grid-template-rows 400ms cubic-bezier(.22,1,.36,1),opacity 320ms ease 50ms,visibility 0s}
+.smooth-disclosure-clip{min-height:0;overflow:hidden}
+.smooth-disclosure-body{padding:4px 0 8px}
+.story-brief .smooth-disclosure-body strong{display:block;margin:6px 0 10px;font-size:12px;font-weight:500;line-height:1.75}
+.story-brief .smooth-disclosure-body p{font-size:12px;color:var(--muted-foreground);line-height:1.85;overflow-wrap:anywhere}
+
+.trading-wrap .trading-chart-viewport{position:relative;isolation:isolate;height:430px;margin-top:16px;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.trading-wrap .trading-chart.trading-frame-layer{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;background:var(--surface);transition:opacity 600ms cubic-bezier(.22,1,.36,1);pointer-events:none}
+.trading-wrap .trading-frame-layer[data-revealed="true"]{opacity:.2}
+.trading-wrap .trading-frame-layer[data-current="true"][data-revealed="true"]{opacity:1;pointer-events:auto}
+.trading-wrap .trading-frame-layer[data-exiting="true"]{opacity:0}
+.trading-frame-placeholder{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:30px;text-align:center;color:var(--soft);background:radial-gradient(ellipse at 20% 25%,color-mix(in srgb,var(--accent-green) 7%,transparent),transparent 55%),radial-gradient(ellipse at 80% 75%,color-mix(in srgb,var(--purple) 8%,transparent),transparent 60%),var(--surface);opacity:1;visibility:visible;transition:opacity 500ms ease,visibility 0s;pointer-events:none}
+.trading-chart-viewport[data-ready="true"] .trading-frame-placeholder{opacity:0;visibility:hidden;transition:opacity 500ms ease,visibility 0s linear 500ms}
+.trading-loading-icon{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;border:1px solid var(--line);background:var(--surface-2);color:var(--accent-green)}
+.trading-frame-placeholder strong{font-size:15px;font-weight:500}
+.trading-frame-placeholder p{max-width:370px;margin:9px 0 0;font-size:12px;line-height:1.8;color:var(--muted-foreground)}
+.trading-loading-line{position:relative;display:block;width:90px;height:3px;overflow:hidden;border-radius:3px;background:var(--line)}
+.trading-loading-line:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,transparent,var(--accent-green),var(--purple),transparent);animation:trading-loading-drift 2.6s ease-in-out infinite}
+.trading-wrap .chart-attribution a{display:inline-flex;align-items:center;gap:6px}
+@keyframes trading-loading-drift{0%{transform:translateX(-100%);opacity:0}30%,70%{opacity:.85}100%{transform:translateX(100%);opacity:0}}
+@media(max-width:480px){.trading-wrap .trading-chart-viewport{height:400px;border-radius:10px}.trading-frame-placeholder{padding:22px}.trading-frame-placeholder strong{font-size:14px}}
+@media(prefers-reduced-motion:reduce){
+ .meridian-dialog-overlay[data-state],.meridian-dialog-content[data-state]{animation-duration:1ms!important}
+ .smooth-disclosure-grid,.smooth-disclosure[data-open="true"] .smooth-disclosure-grid,.smooth-disclosure-trigger svg,.trading-wrap .trading-chart.trading-frame-layer,.trading-frame-placeholder,.trading-chart-viewport[data-ready="true"] .trading-frame-placeholder{transition:none!important}
+ .trading-loading-line:after{animation:none;opacity:.65}
+}
+
+.trading-wrap .trading-frame-note{min-height:28px;margin:0;padding:5px 4px;color:var(--muted-foreground);font-size:11px;line-height:1.7;opacity:0;transition:opacity 360ms ease;pointer-events:none}
+.trading-wrap .trading-frame-note[data-visible="true"]{opacity:1}
+@media(prefers-reduced-motion:reduce){.trading-wrap .trading-frame-note{transition:none}}
