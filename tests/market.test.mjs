@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {validateRates,withinPeriod,pct} from '../lib/market-data.ts';
+import {forecast} from '../lib/forecast.ts';
+import {parseFeed,sources} from '../lib/news.ts';
+import {allAssets,assetId,stockAssets} from '../lib/market-catalog.ts';
+test('rejects malformed FX data and retains valid rates',()=>{assert.throws(()=>validateRates({}));assert.equal(validateRates([{date:'2026-09-01',base:'EUR',quote:'USD',rate:1.2},{date:'2026-09-01',base:'EUR',quote:'USD',rate:-1}]).length,1)});
+test('period is calendar based and percent uses first/last values',()=>{const r=[{date:'2026-01-01',rate:1},{date:'2026-08-20',rate:2},{date:'2026-09-14',rate:3}];assert.equal(withinPeriod(r,30).length,2);assert.equal(pct(withinPeriod(r,30)),50);assert.equal(pct([]),null)});
+test('forecast suppresses stale or insufficient data and uses inverse currency strength',()=>{const now=Date.parse('2026-09-14');const rows=Array.from({length:61},(_,i)=>({date:new Date(now-(60-i)*86400000).toISOString().slice(0,10),quote:'USD',rate:Math.exp(-i*.001)}));assert.ok(forecast(rows,'USD',now).mid>0);assert.equal(forecast(rows.slice(0,20),'USD',now),null);assert.equal(forecast(rows,'USD',now+9*86400000),null)});
+test('news rejects unsafe links and parses CDATA without HTML',()=>{const xml='<item><title><![CDATA[<b>NVIDIA growth</b>]]></title><link>https://example.com/</link><pubDate>Mon, 14 Sep 2026 10:00:00 GMT</pubDate></item><item><title>bad</title><link>javascript:alert(1)</link></item>';const r=parseFeed(xml,sources[0]);assert.equal(r.length,1);assert.equal(r[0].title,'NVIDIA growth');assert.deepEqual(r[0].assets,['NVDA'])});
+test('catalog has globally distinct symbols and several regions',()=>{assert.equal(new Set(allAssets.map(assetId)).size,allAssets.length);assert.ok(stockAssets.length>=70);assert.ok(new Set(stockAssets.map(a=>a.region)).size>=6)});

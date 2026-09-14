@@ -1,0 +1,9 @@
+"use client";
+import {useEffect,useMemo,useState} from 'react';
+import {ExternalLink,RotateCcw} from 'lucide-react';
+export default function TradingChart({symbol,theme}:{symbol:string;theme:'light'|'dark'}){
+ const [attempt,setAttempt]=useState(0),[loaded,setLoaded]=useState(false),[slow,setSlow]=useState(false);
+ const src=useMemo(()=>{const config={autosize:true,width:'100%',height:'100%',symbol,interval:'D',timezone:'Etc/UTC',theme,style:'1',locale:'ru',allow_symbol_change:true,hide_side_toolbar:true,hide_volume:false,calendar:false,save_image:false,withdateranges:true,backgroundColor:theme==='dark'?'#111923':'#ffffff',gridColor:theme==='dark'?'rgba(255,255,255,0.05)':'rgba(20,30,40,0.05)',support_host:'https://www.tradingview.com'};return `https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=ru#${encodeURIComponent(JSON.stringify(config))}`},[symbol,theme]);
+ useEffect(()=>{setLoaded(false);setSlow(false);const timer=setTimeout(()=>setSlow(true),20000);return()=>clearTimeout(timer)},[src,attempt]);
+ return <div className="trading-wrap"><iframe key={`${src}-${attempt}`} src={src} title={`Биржевой график ${symbol} — TradingView`} className="trading-chart" frameBorder="0" allowFullScreen referrerPolicy="origin" onLoad={()=>setLoaded(true)}/>{!loaded&&<div className="widget-loading" role="status">{slow?'Источник отвечает дольше обычного. Можно повторить или открыть график отдельно.':'Загружаем график TradingView…'}{slow&&<button className="btn secondary" onClick={()=>setAttempt(x=>x+1)}><RotateCcw size={15}/>Повторить</button>}</div>}<div className="chart-attribution"><a href={`https://www.tradingview.com/chart/?symbol=${encodeURIComponent(symbol)}`} target="_blank" rel="noopener noreferrer">{symbol} — график TradingView <ExternalLink size={13}/></a><span>Поток источника · задержка зависит от биржи</span></div></div>
+}
