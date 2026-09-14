@@ -21,17 +21,21 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      - run: npm ci --no-audit --no-fund
       - name: News cache bucket
         id: news-cache-key
         run: echo "hour=$(date -u +%Y%m%d%H)" >> "$GITHUB_OUTPUT"
       - uses: actions/cache@v4
         with:
-          path: .news-cache.json
-          key: news-v4-${{ steps.news-cache-key.outputs.hour }}
-          restore-keys: news-v4-
+          path: |
+            .news-cache.json
+            .translation-cache.json
+          key: news-v5-${{ steps.news-cache-key.outputs.hour }}
+          restore-keys: news-v5-
       - run: npm run test:market
       - run: npm run build:pages
+        env:
+          DEEPL_AUTH_KEY: ${{ secrets.DEEPL_AUTH_KEY }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

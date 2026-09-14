@@ -47,3 +47,5 @@ next-env.d.ts
 /dist-pages/
 *.tsbuildinfo
 /.news-cache.json
+/.model-cache/
+/.translation-cache.json

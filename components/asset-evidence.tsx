@@ -2,6 +2,7 @@
 import {useEffect,useState} from 'react';
 import {dailyIdeas,relevantNews} from '@/lib/ideas';
 import type {Story} from '@/lib/news';
+import StoryBrief from '@/components/story-brief';
 export function IdeasBanner({news,onSelect}:{news:Story[];onSelect:(ticker:string)=>void}){
  const [index,setIndex]=useState(0);
  useEffect(()=>{const id=setInterval(()=>setIndex(i=>i+1),8000);return()=>clearInterval(id)},[]);
@@ -10,5 +11,5 @@ export function IdeasBanner({news,onSelect}:{news:Story[];onSelect:(ticker:strin
 }
 export function AssetEvidence({ticker,news}:{ticker:string;news:Story[]}){
  const related=relevantNews(news,ticker),idea=dailyIdeas(news).find(i=>i.ticker===ticker);
- return <section className="asset-evidence"><div className="kicker">КОНТЕКСТ ПОКУПКИ · {ticker}</div><h2>{idea?'Почему стоит рассмотреть актив':'Что известно об активе'}</h2><p>{idea?.reason||'Свежего положительного сигнала недостаточно для рекомендации покупки.'}</p>{idea&&<p className="method-note">{idea.risks.join(' ')}</p>}{related.length?related.slice(0,8).map(n=><article className="evidence-story" key={n.url}><div className="news-meta"><b>{n.source}</b><time>{new Date(n.date).toLocaleDateString('ru-RU')}</time><span>{n.signal>0?'Позитивный фактор':n.signal<0?'Риск':'Контекст'}</span></div><h3>{n.title}</h3><p>{n.summary}</p><small>{n.summaryKind||'Кратко из источника'}</small>{(n.catalyst||n.concern)&&<p>{n.concern||n.catalyst}</p>}<a href={n.url} target="_blank" rel="noopener noreferrer">Читать полную статью ↗</a></article>):<p>В подключённых источниках пока нет публикаций, прямо связанных с {ticker}.</p>}</section>
+ return <section className="asset-evidence"><div className="kicker">КОНТЕКСТ ПОКУПКИ · {ticker}</div><h2>{idea?'Почему стоит рассмотреть актив':'Что известно об активе'}</h2><p>{idea?.reason||'Свежего положительного сигнала недостаточно для рекомендации покупки.'}</p>{idea&&<p className="method-note">{idea.risks.join(' ')}</p>}{related.length?related.slice(0,8).map(n=><article className="evidence-story" key={n.url}><div className="news-meta"><b>{n.source}</b><time>{new Date(n.date).toLocaleDateString('ru-RU')}</time><span>{n.signal>0?'Позитивный фактор':n.signal<0?'Риск':'Контекст'}</span></div><h3>{n.ru?.title||n.title}</h3><StoryBrief story={n}/>{(n.catalyst||n.concern)&&<p>{n.concern||n.catalyst}</p>}</article>):<p>В подключённых источниках пока нет публикаций, прямо связанных с {ticker}.</p>}</section>
 }
