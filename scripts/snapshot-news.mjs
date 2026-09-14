@@ -1,8 +1,11 @@
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
-import {fetchNews} from '../lib/news.ts';
+import {collectNews} from '../lib/news.ts';
 const target=new URL('../public/data/news.json',import.meta.url);
-const data=await fetchNews();
-if(!data.news.length){try{const previous=JSON.parse(await readFile(target,'utf8'));if(previous.news?.length){previous.errors=[...data.errors,'Сохранён предыдущий снимок: обновление источников не удалось.'];await writeFile(target,JSON.stringify(previous));console.warn('Keeping previous news snapshot');process.exit(0)}}catch{} }
+const cacheFile=new URL('../.news-cache.json',import.meta.url);
+let previous={};try{previous=JSON.parse(await readFile(cacheFile,'utf8'))}catch{}
+const {snapshot,cache}=await collectNews(previous);
 await mkdir(new URL('../public/data/',import.meta.url),{recursive:true});
-await writeFile(target,JSON.stringify(data));
-console.log(`News snapshot: ${data.news.length} stories, ${data.errors.length} errors, ${data.fetchedAt}`);
+if(!snapshot.news.length){try{const old=JSON.parse(await readFile(target,'utf8'));snapshot.news=old.news||[];snapshot.errors.push('Сохранён предыдущий снимок новостей: свежие данные не получены.')}catch{}}
+await writeFile(target,JSON.stringify(snapshot));
+await writeFile(cacheFile,JSON.stringify(cache));
+console.log(`News: ${snapshot.news.length} articles, ${snapshot.availableCount}/${snapshot.sourceCount} feeds responded, ${snapshot.publisherCount} publishers; checked ${snapshot.fetchedAt}`);
