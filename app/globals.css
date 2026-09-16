@@ -48,3 +48,8 @@ button svg,a svg{transition:transform 300ms var(--ease-fluid),opacity 220ms var(
 @media(prefers-reduced-motion:reduce){.app-shell button,[data-slot=dialog-content] button{transition-duration:.01ms!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-iteration-count:1!important}}
 .asset-panel tr{transition:background-color 300ms var(--ease-soft),box-shadow 300ms var(--ease-soft)}.asset-panel tr[data-selected=true]{box-shadow:inset 3px 0 var(--accent-green)}.idea-bottom .idea-dots button{transition:width 420ms var(--ease-fluid),scale 220ms var(--ease-fluid),background-color 260ms var(--ease-soft)}
+
+/* Full-row navigation and a clear, single home for data controls. */
+.asset-row{cursor:pointer}.asset-panel .asset-row:has(:focus-visible){background:var(--green-soft);box-shadow:inset 3px 0 var(--accent-green)}.asset-row .asset-name{min-height:44px;width:100%;text-align:left}.asset-row .sector-label{cursor:inherit}.asset-row .icon-btn,.asset-row .chart-link{min-width:44px;min-height:44px}.selected-asset-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}.security-chart{scroll-margin-top:88px}.topbar-right>.icon-btn{min-width:40px;min-height:40px}
+@media(min-width:1700px){.content{max-width:min(1440px,calc(100vw - 432px))}}
+@media(max-width:760px){.security-chart{scroll-margin-top:16px}.topbar-right{gap:5px}.topbar-right .avatar{display:none}.selected-asset-actions{gap:2px}}

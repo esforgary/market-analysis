@@ -45,3 +45,35 @@
 .trading-wrap .trading-frame-note{min-height:28px;margin:0;padding:5px 4px;color:var(--muted-foreground);font-size:11px;line-height:1.7;opacity:0;transition:opacity 360ms ease;pointer-events:none}
 .trading-wrap .trading-frame-note[data-visible="true"]{opacity:1}
 @media(prefers-reduced-motion:reduce){.trading-wrap .trading-frame-note{transition:none}}
+
+/* The shell clips its rounded edge; only the inset body can scroll. */
+.meridian-dialog-content[data-slot="dialog-content"]{display:flex;flex-direction:column;gap:0;min-height:0;max-height:min(88vh,calc(100dvh - 32px));padding:0!important;overflow:hidden!important;isolation:isolate}
+.meridian-dialog-content>.meridian-dialog-body{display:grid;gap:16px;min-height:0;margin:14px 8px;padding:16px 22px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scroll-behavior:auto;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--muted-foreground) 38%,transparent) transparent;-webkit-overflow-scrolling:touch}
+.meridian-dialog-body::-webkit-scrollbar{width:6px}
+.meridian-dialog-body::-webkit-scrollbar-track{background:transparent}
+.meridian-dialog-body::-webkit-scrollbar-thumb{border:1px solid transparent;background:color-mix(in srgb,var(--muted-foreground) 38%,transparent);background-clip:padding-box;border-radius:8px}
+
+.meridian-dialog-content>.meridian-dialog-close{position:absolute;z-index:2;top:12px;right:12px;display:grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted-foreground);opacity:1;transform:none!important;translate:none!important;scale:1!important;box-shadow:none;outline:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:color 220ms ease,background-color 220ms ease,border-color 220ms ease}
+.meridian-dialog-content>.meridian-dialog-close>svg{display:block;width:20px;height:20px;pointer-events:none;transform:none!important;scale:1!important}
+.meridian-dialog-content>.meridian-dialog-close:focus:not(:focus-visible){outline:none;box-shadow:none}
+.meridian-dialog-content>.meridian-dialog-close:focus-visible{outline:2px solid var(--accent-green);outline-offset:2px;color:var(--text);background:var(--surface-2)}
+@media(hover:hover) and (pointer:fine){.meridian-dialog-content>.meridian-dialog-close:hover{background:var(--surface-2);border-color:var(--line);color:var(--text)}}
+.meridian-dialog-content>.meridian-dialog-close:active{background:var(--surface-3);color:var(--text)}
+@media(max-width:480px){
+ .meridian-dialog-content[data-slot="dialog-content"]{max-height:calc(100dvh - 24px)}
+ .meridian-dialog-content>.meridian-dialog-body{margin:12px 6px;padding:11px 17px}
+ .meridian-dialog-content>.meridian-dialog-close{top:10px;right:10px}
+
+}
+@media(prefers-reduced-motion:reduce){.meridian-dialog-content>.meridian-dialog-close{transition:none}}
+
+.meridian-dialog-content>.meridian-dialog-fixed-header{position:relative;z-index:1;display:grid;flex:0 0 auto;gap:9px;min-height:68px;padding:28px 30px 21px;border-bottom:1px solid var(--line);background:var(--surface)}
+.meridian-dialog-content[data-has-close="true"]>.meridian-dialog-fixed-header{padding-right:70px}
+.meridian-dialog-fixed-header>[data-slot="dialog-header"]{padding-right:0}
+.meridian-dialog-content>.meridian-dialog-fixed-header+.meridian-dialog-body{margin-top:8px;padding-top:12px}
+.meridian-dialog-fixed-header+.meridian-dialog-body>.method-block:first-child{padding-top:0;border-top:0}
+@media(max-width:480px){
+ .meridian-dialog-content>.meridian-dialog-fixed-header{padding:22px 23px 18px}
+ .meridian-dialog-content[data-has-close="true"]>.meridian-dialog-fixed-header{padding-right:64px}
+ .meridian-dialog-content>.meridian-dialog-fixed-header+.meridian-dialog-body{margin-top:7px;padding-top:11px}
+}
