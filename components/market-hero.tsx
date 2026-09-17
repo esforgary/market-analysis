@@ -1,5 +1,50 @@
 "use client";
 import {ArrowUpRight,Globe2,Newspaper,Radio,TrendingUp} from 'lucide-react';
-export default function MarketHero({feeds,publishers,available,onNavigate}:{feeds?:number;publishers?:number;available?:number;onNavigate:(view:string)=>void}){
- return <section className="market-hero" aria-label="Мировые рынки"><div className="hero-copy"><div className="hero-label"><span className="dot"/> YOUR MARKET PERSPECTIVE</div><h1>Большой мир.<br/>Ясный <em>взгляд.</em></h1><p>Компании, валюты и события. <br/>Соберите свой взгляд на рынок — <br/>с данными, которые можно проверить.</p><button className="hero-explore" onClick={()=>onNavigate('Акции')}>Исследовать активы <ArrowUpRight size={18}/></button></div><div className="hero-cards"><button className="hero-glass hero-wide" onClick={()=>onNavigate('Новости')}><span className="hero-icon cyan"><Newspaper size={22}/></span><span><strong>Что движет рынком <ArrowUpRight size={15}/></strong><small>Мировая экономика, технологии и компании. <br/>Новости с контекстом и первоисточниками.</small></span></button><button className="hero-glass" onClick={()=>onNavigate('Акции')}><span className="hero-icon violet"><TrendingUp size={21}/></span><span><strong>Компании мира <ArrowUpRight size={15}/></strong><small>77 акций · подробные графики</small></span></button><button className="hero-glass" onClick={()=>onNavigate('Валюты')}><span className="hero-icon mint"><Globe2 size={21}/></span><span><strong>Валютный рынок <ArrowUpRight size={15}/></strong><small>40+ валют · история и курсы</small></span></button><button className="hero-glass hero-wide hero-source" onClick={()=>onNavigate('Источники')}><span className="hero-icon mint"><Radio size={21}/></span><span><strong>Проверяйте источники <ArrowUpRight size={15}/></strong><small>Даты публикаций, доступность и статус каждой ленты.</small></span></button><div className="hero-metrics"><div className="hero-metric"><span className="metric-dot cyan"/><strong>{feeds??'—'}</strong><small>новостных лент</small></div><div className="hero-metric"><span className="metric-dot violet"/><strong>{publishers??'—'}</strong><small>редакций и организаций</small></div><div className="hero-metric"><span className="metric-dot mint"/><strong>{available??'—'}</strong><small>ответили при сборе</small></div></div></div></section>
+import {stockAssets} from '@/lib/market-catalog';
+import './market-hero.css';
+
+type MarketHeroProps={
+ feeds?:number;
+ publishers?:number;
+ available?:number;
+ onNavigate:(view:string)=>void;
+};
+
+export default function MarketHero({feeds,publishers,available,onNavigate}:MarketHeroProps){
+ return <section className="market-hero market-intro" aria-label="Мировые рынки">
+  <div className="hero-copy intro-copy">
+   <div className="intro-eyebrow"><span/>ВАШ ВЗГЛЯД НА РЫНОК</div>
+   <h1>Большой мир.<br/>Ясный <em>взгляд.</em></h1>
+   <p>Новости, графики и курсы — чтобы видеть, что стоит за движением рынка.</p>
+   <button className="hero-explore intro-explore" onClick={()=>onNavigate('Акции')}>Исследовать активы <ArrowUpRight size={18}/></button>
+  </div>
+  <div className="intro-console">
+   <button className="intro-feature" onClick={()=>onNavigate('Новости')}>
+    <span className="intro-feature-label"><Newspaper size={16}/>НОВОСТИ И СОБЫТИЯ</span>
+    <span className="intro-feature-arrow"><ArrowUpRight size={21}/></span>
+    <strong>Что движет рынком</strong>
+    <span className="intro-feature-description">Контекст, который помогает увидеть больше.</span>
+   </button>
+   <div className="intro-routes">
+    <button className="intro-route" onClick={()=>onNavigate('Акции')}>
+     <span className="intro-route-icon"><TrendingUp size={20}/></span>
+     <span className="intro-route-copy"><strong>Компании мира</strong><small>{stockAssets.length} акций · графики и события</small></span>
+     <ArrowUpRight className="intro-route-arrow" size={16}/>
+    </button>
+    <button className="intro-route" onClick={()=>onNavigate('Валюты')}>
+     <span className="intro-route-icon"><Globe2 size={20}/></span>
+     <span className="intro-route-copy"><strong>Валютный рынок</strong><small>Курсы и история изменений</small></span>
+     <ArrowUpRight className="intro-route-arrow" size={16}/>
+    </button>
+   </div>
+  </div>
+  <div className="intro-foot">
+   <dl className="intro-coverage">
+    <div><dt>новостных лент</dt><dd>{feeds??'—'}</dd></div>
+    <div><dt>редакций и организаций</dt><dd>{publishers??'—'}</dd></div>
+    <div><dt>ответили при сборе</dt><dd>{available??'—'}</dd></div>
+   </dl>
+   <button className="intro-sources" onClick={()=>onNavigate('Источники')}><Radio size={15}/><span>Проверить источники</span><ArrowUpRight size={15}/></button>
+  </div>
+ </section>;
 }
