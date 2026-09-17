@@ -24,20 +24,14 @@ export default function MarketHero({feeds,publishers,available,onNavigate}:Marke
    <p>Новости, графики и курсы — чтобы видеть, что стоит за движением рынка.</p>
    <button className="hero-explore intro-explore" onClick={()=>onNavigate('Акции')}>Исследовать активы <ArrowUpRight size={18}/></button>
   </div>
-  <div className="intro-console">
-   <div className="intro-console-heading"><span>Обзор рынка</span><span className="intro-console-mark" aria-hidden="true"><i/><i/><i/></span></div>
-   <div className="intro-recess">
-    <nav className="intro-glass" aria-label="Быстрый доступ к рынкам">
-     <span className="intro-edge-lights" aria-hidden="true"><i/><i/><i/><i/></span>
-     <div className="intro-glass-heading"><span>Ваши инструменты</span><span>04</span></div>
-     {destinations.map(({view,title,description,icon:Icon,tone})=><button key={view} className={'intro-destination intro-tone-'+tone} onClick={()=>onNavigate(view)}>
-      <span className="intro-destination-icon"><Icon size={21}/></span>
-      <span className="intro-destination-copy"><strong>{title}</strong><small>{description}</small></span>
-      <span className="intro-destination-arrow"><ArrowUpRight size={15}/></span>
-     </button>)}
-    </nav>
-   </div>
-  </div>
+  <nav className="intro-console" aria-label="Быстрый доступ к рынкам">
+   <h2 className="intro-console-heading">Обзор рынка</h2>
+   {destinations.map(({view,title,description,icon:Icon,tone})=><button key={view} className={'intro-destination intro-tone-'+tone} onClick={()=>onNavigate(view)}>
+    <span className="intro-destination-icon"><Icon size={21}/></span>
+    <span className="intro-destination-copy"><strong>{title}</strong><small>{description}</small></span>
+    <ArrowUpRight className="intro-destination-arrow" size={17}/>
+   </button>)}
+  </nav>
   <div className="intro-foot">
    <dl className="intro-coverage">
     <div><dt>новостных лент</dt><dd>{feeds??'—'}</dd></div>
