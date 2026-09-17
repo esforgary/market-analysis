@@ -8,6 +8,7 @@ import {
   readNotificationHistory, reconcileNotifications, type Notice, type NotificationHistory,
 } from '@/lib/notification-history';
 import './notification-center.css';
+import PushSettings from '@/components/push-settings';
 
 export type NotificationCenterProps = {
   notices: Notice[];
@@ -99,8 +100,9 @@ export default function NotificationCenter({ notices, onOpenSources, ready = tru
         <DialogHeader className="notification-heading">
           <span className="notification-heading-icon"><Bell size={20} aria-hidden="true" /></span>
           <DialogTitle>Уведомления</DialogTitle>
-          <DialogDescription>Состояние данных и источников. Последние 50 событий сохраняются на этом устройстве.</DialogDescription>
+          <DialogDescription>Рыночные события и состояние источников. Настройки и журнал этого устройства.</DialogDescription>
         </DialogHeader>
+        <PushSettings/>
         <div className="notification-toolbar">
           <span>{history.entries.length ? activeCount ? activeCount + ' активных' : 'Все события устранены' : 'Журнал событий'}</span>
           <button type="button" onClick={() => commit(clearNotificationHistory(historyRef.current))} disabled={!history.entries.length}>

@@ -1,0 +1,24 @@
+/* One full-page snapshot also blends gradients, SVG fills and glass surfaces. */
+:root[data-theme-transition="native"]{view-transition-name:theme-page!important}
+:root[data-theme-transition="native"] *{view-transition-name:none!important}
+:root[data-theme-transition="native"]::view-transition{pointer-events:none}
+:root[data-theme-transition="native"]::view-transition-group(theme-page){animation:none}
+:root[data-theme-transition="native"]::view-transition-image-pair(theme-page){isolation:isolate}
+:root[data-theme-transition="native"]::view-transition-old(theme-page){z-index:2;mix-blend-mode:normal;animation:meridian-theme-reveal 480ms cubic-bezier(.2,.7,.2,1) both}
+:root[data-theme-transition="native"]::view-transition-new(theme-page){z-index:1;mix-blend-mode:normal;opacity:1;animation:none}
+@keyframes meridian-theme-reveal{from{opacity:1}to{opacity:0}}
+/* Snap the underlying DOM to final colors before the new snapshot is captured. */
+:root[data-theme-transition],
+:root[data-theme-transition] *,
+:root[data-theme-transition] *::before,
+:root[data-theme-transition] *::after,
+:root[data-theme-initializing],
+:root[data-theme-initializing] *,
+:root[data-theme-initializing] *::before,
+:root[data-theme-initializing] *::after{transition:none!important}
+.theme-transition-veil{position:fixed;inset:0;z-index:2147483646;opacity:0;pointer-events:none;contain:strict}
+@media(prefers-reduced-motion:reduce){
+ :root[data-theme-transition="native"]::view-transition-old(theme-page),
+ :root[data-theme-transition="native"]::view-transition-new(theme-page){animation:none!important}
+ .theme-transition-veil{display:none}
+}

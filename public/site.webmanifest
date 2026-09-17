@@ -1,0 +1,32 @@
+{
+  "id": "./",
+  "name": "Meridian — мировые рынки",
+  "short_name": "Meridian",
+  "description": "Акции, валюты и новости мировых рынков",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080e20",
+  "theme_color": "#0b1329",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png?v=20260917",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png?v=20260917",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/maskable-512.png?v=20260917",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

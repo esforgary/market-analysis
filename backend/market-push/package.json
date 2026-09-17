@@ -1,0 +1,1 @@
+{"name":"meridian-market-push","private":true,"type":"module","scripts":{"test":"node --experimental-strip-types --test tests/*.test.mjs","dev":"node ../../node_modules/wrangler/bin/wrangler.js dev --config wrangler.jsonc --local","check":"node ../../node_modules/wrangler/bin/wrangler.js deploy --config wrangler.jsonc --dry-run --outdir dist"},"dependencies":{"web-push":"3.6.7"}}

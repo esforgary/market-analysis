@@ -38,6 +38,8 @@ jobs:
           path: .securities-cache.json
           key: securities-v1-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: securities-v1-
+      - run: npm ci --prefix backend/market-push --no-audit --no-fund
+      - run: npm run test:push
       - run: npm run test:market
       - run: npm run build:pages
         env:
