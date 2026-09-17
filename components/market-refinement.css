@@ -324,6 +324,11 @@ html:root .app-shell .hero-metric strong {
   .app-shell .news-panel .brief-original:hover { text-decoration: underline; text-underline-offset: 4px; }
 }
 @media (min-width:1101px) {
+  /* One desktop width keeps the header and content aligned across breakpoints. */
+  .app-shell .content,
+  .app-shell .topbar { max-width: 1280px; margin-inline: auto; padding-inline: 32px; }
+  .app-shell .market-hero { padding: 28px 12px 32px; gap: 40px; }
+  .app-shell .hero-copy h1 { font-size: clamp(43px, 4vw, 56px); }
   .app-shell .sidebar { gap: 22px; }
   .app-shell .sidebar .nav-item { font-size: 11px; padding: 11px 12px; }
 }
