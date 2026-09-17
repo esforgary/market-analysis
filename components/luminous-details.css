@@ -1,0 +1,52 @@
+/* Light catches the edges of the market surfaces, without altering their layout. */
+.app-shell .ideas-banner{
+ border-radius:32px;border:1px solid #b9d5cc35;color:#f2f6f3;
+ background:radial-gradient(ellipse at 3% 0%,#52edb943,transparent 42%),radial-gradient(ellipse at 94% 100%,#8d62e54a,transparent 52%),linear-gradient(145deg,#303735 0%,#151c1c 47%,#111517 100%);
+ box-shadow:inset 0 1px 1px #ffffff4a,inset 1px 0 4px #ffffff0c,inset 0 -1px 2px #a6c6be1f,0 20px 45px #00000025,0 3px 8px #00000020;
+}
+.app-shell .ideas-banner::after{background:linear-gradient(150deg,#ffffff0b,transparent 28%,transparent 75%,#ad8bff07);border-radius:inherit}
+.app-shell .idea-label{color:#c0e8d6;letter-spacing:.12em}
+.app-shell .idea-curated{border-color:#c4a8ff3c;background:linear-gradient(120deg,#b999ff09,#ab78f825);box-shadow:inset 0 1px 1px #ffffff24,0 3px 10px #0002;color:#dac6ff;border-radius:999px;padding:8px 12px}
+.app-shell .idea-verdict{display:inline-flex;width:fit-content;padding:7px 11px;border-radius:999px;color:#b6f5d0;background:linear-gradient(120deg,#66e5a510,#43c9821e);border:1px solid #81edab24;box-shadow:inset 0 1px #ffffff12}
+.app-shell .idea-verdict>span{background:#65f195;box-shadow:0 0 10px #28e22f85}
+.app-shell .idea-symbol{color:#b1c2bd}
+.app-shell .idea-reason{color:#c6d0cc}
+.app-shell .idea-evidence{color:#94a79f}
+.app-shell .idea-cta.btn.primary{color:#0f2820;background:linear-gradient(110deg,#b8fb91,#62f3cd);border:1px solid #ddffe270;border-radius:999px;box-shadow:inset 0 1px #ffffffcc,0 5px 22px #5cecac26,0 1px 3px #0003;padding-inline:22px;font-weight:600}
+.app-shell .idea-orbit{border-color:#b8e8d114;box-shadow:inset 0 0 70px #54ebb408,0 0 50px #81f4c604}
+.app-shell .orbit-inner{border-color:#b9d8cd18}
+.app-shell .idea-art-logo{background:radial-gradient(ellipse at 50% 100%,#74e8c02b,transparent 72%),linear-gradient(145deg,#3b4643,#181f1e 64%);border:1px solid #bfdedc2b;box-shadow:inset 0 2px 3px #fffffd29,inset 0 -2px 4px #93e4cb1c,0 26px 45px #0007,0 0 55px #67f2c312;border-radius:35px;transform:rotate(-7deg)}
+.app-shell .idea-art-code{color:#dcece4;background:linear-gradient(125deg,#3c484a9c,#252533c9);border-color:#b9d4cf36;box-shadow:inset 0 1px #ffffff24,0 8px 20px #0004;backdrop-filter:blur(20px);border-radius:999px}
+.app-shell .idea-art-caption{color:#a2b2ac;letter-spacing:.13em}
+.app-shell .idea-bottom{border-color:#c8e4d914}
+.app-shell .idea-disclaimer{color:#acbbb7}
+.app-shell .idea-bottom .idea-control{width:40px;height:40px;background:linear-gradient(145deg,#ffffff0d,#ffffff02);border-color:#c9d6e022;box-shadow:inset 0 1px 1px #ffffff15,0 2px 5px #0002}
+.app-shell .idea-bottom .idea-pause{width:38px;height:38px}
+.app-shell .idea-bottom .idea-dots button{height:40px}
+.app-shell .idea-dots button[aria-pressed=true]>span{background:#8cf1c1;box-shadow:0 0 9px #63f4b066}
+.app-shell .idea-ambient>span{border-color:#c2ddcd07}
+
+/* Local icon wells carry the asset's own color. */
+.app-shell .asset-logo.asset-icon,.app-shell .idea-asset-icon.asset-icon{
+ border-radius:13px;border:1px solid color-mix(in srgb,var(--asset-ink,#89b9e9) 19%,#ffffff13);
+ background:radial-gradient(ellipse at 50% 115%,color-mix(in srgb,var(--asset-ink,#89b9e9) 33%,transparent),transparent 67%),linear-gradient(145deg,#303839,#171b20);
+ box-shadow:inset 0 1px 1px #ffffff23,inset 0 -1px 2px #ffffff0a,0 4px 9px #0002;
+}
+.app-shell .asset-icon>rect:first-child{fill-opacity:.045;stroke-opacity:.13}
+.app-shell .selected-asset .asset-logo.asset-icon{border-radius:17px}
+.app-shell .idea-asset-icon.asset-icon{border-radius:16px;box-shadow:inset 0 1px #ffffff36,0 5px 17px #0003}
+.app-shell .idea-art-logo>.asset-icon{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--asset-ink,#b7ddd2) 20%,transparent))}
+
+/* Keep the functional windows familiar, with the same inset edge highlights. */
+html:root[data-theme=dark] .meridian-dialog-content[data-slot=dialog-content]{background:linear-gradient(135deg,#2c302f,#181d1b)!important;border-color:#e6f4ea21!important;box-shadow:inset 0 1px 2px #ffffff30,inset 0 -1px 1px #ffffff10,0 30px 95px #0009}
+html:root[data-theme=dark] .meridian-dialog-fixed-header[data-slot=dialog-fixed-header]{background:linear-gradient(150deg,#303632,#252a27)}
+.app-shell .floating-rates-panel,.app-shell .floating-rates-trigger{border-color:color-mix(in srgb,var(--text) 13%,transparent);box-shadow:inset 0 1px 2px #ffffff1d,0 14px 36px #0003}
+html:root[data-theme=dark] .floating-rates-panel{background:linear-gradient(150deg,#303530f5,#191e1af5)}
+html:root[data-theme=dark] .floating-rates-trigger{background:linear-gradient(140deg,#353c34f5,#1b201bf5)}
+html:root[data-theme=dark] .notification-toast{background:linear-gradient(140deg,#303630f5,#1b201cf5);border-color:#e1f7e223;box-shadow:inset 0 1px 1px #ffffff24,0 15px 45px #0006}
+.app-shell .ambient-orbs{opacity:.4;filter:blur(13px) saturate(.75)}
+html:root:not([data-theme=dark]) .app-shell .ambient-orbs{opacity:.17;filter:blur(18px) saturate(.8)}
+html:root:not([data-theme=dark]) .app-shell .ideas-banner{box-shadow:inset 0 1px 2px #ffffff45,0 18px 40px #20392d24,0 3px 7px #223d2420}
+@media(hover:hover) and (pointer:fine){.app-shell .idea-cta.btn.primary:hover{background:linear-gradient(110deg,#c8ffa4,#79ffdb);box-shadow:inset 0 1px #fff,0 6px 28px #64f3b342}.app-shell .idea-bottom .idea-control:hover{border-color:#c8efde55;background:linear-gradient(145deg,#ffffff17,#ffffff08)}}
+@media(max-width:760px){.app-shell .ideas-banner{border-radius:25px}.app-shell .idea-cta.btn.primary{min-height:46px}.app-shell .idea-bottom .idea-control{width:40px;height:40px}.app-shell .idea-bottom .idea-pause{width:38px;height:38px}.app-shell .ambient-orbs{filter:blur(12px);opacity:.3}}
+@media(prefers-reduced-motion:reduce){.app-shell .ambient-orbs{opacity:.2}}

@@ -1,0 +1,383 @@
+/* Meridian materials: sculpted graphite, frosted rims and localized illumination. */
+html:root {
+  --bg: #eef0f2;
+  --surface: #fbfcfd;
+  --surface-2: #e9edf0;
+  --surface-3: #dce4e8;
+  --text: #1c2528;
+  --soft: #506166;
+  --muted-foreground: #66757c;
+  --line: #263c4a1c;
+  --accent-green: #087e76;
+  --green-soft: #0aaf9810;
+  --purple: #7651b8;
+  --purple-soft: #825cc714;
+  --primary: #087e76;
+  --primary-foreground: #fff;
+  --market-positive: #28e22f;
+  --market-negative: #e32636;
+  --market-positive-text: #137a1a;
+  --market-negative-text: #c52030;
+  --material-card: linear-gradient(145deg, #ffffffed, #f7f9faed 54%, #edf1f4ed);
+  --material-rim: inset 0 1px 1px #fff, inset 0 -1px 1px #8397a213;
+  --material-shadow: 0 15px 35px -20px #273e4855, 0 3px 7px -3px #273e4820;
+  --material-control: linear-gradient(160deg, #fff, #e8edf0);
+  --material-inset: inset 0 2px 4px #61778012, 0 1px 0 #fff;
+}
+html:root[data-theme="dark"] {
+  --bg: #101213;
+  --surface: #1b1e20;
+  --surface-2: #252a2c;
+  --surface-3: #333a3d;
+  --text: #f2f5f4;
+  --soft: #c2ccca;
+  --muted-foreground: #9ba8a5;
+  --line: #d8efea14;
+  --accent-green: #60ebc5;
+  --green-soft: #4ef2c314;
+  --purple: #bea0fb;
+  --purple-soft: #a175ff16;
+  --primary: #65efc7;
+  --primary-foreground: #102c24;
+  --market-positive-text: var(--market-positive);
+  --market-negative-text: var(--market-negative);
+  --material-card: linear-gradient(145deg, #303534e8 0%, #212625f0 31%, #171b1beF 77%, #1d2221f2);
+  --material-rim: inset 0 1px 1px #effffb22, inset 0 -1px 2px #ffffff06;
+  --material-shadow: 0 23px 39px -23px #000c, 0 5px 10px -4px #0008;
+  --material-control: linear-gradient(155deg, #444d4c91 0%, #252e2b 55%, #1c2422);
+  --material-inset: inset 0 2px 6px #0005, 0 1px 0 #edfff612;
+}
+.app-shell .positive,
+.app-shell .sentiment.positive { color: var(--market-positive-text); }
+.app-shell .negative,
+.app-shell .sentiment.negative { color: var(--market-negative-text); }
+
+/* A softly lit navigation rail above a quiet information toolbar. */
+.app-shell .sidebar {
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border-color: var(--line);
+  box-shadow: 0 8px 30px #0000000d, inset 0 -1px #ffffff05;
+  backdrop-filter: blur(24px);
+}
+.app-shell .sidebar::before { opacity: .45; }
+.app-shell .sidebar .brand { font-weight: 650; letter-spacing: -.06em; }
+.app-shell .sidebar .nav-item {
+  min-height: 44px;
+  border-radius: 999px;
+  color: var(--soft);
+  letter-spacing: -.01em;
+  font-weight: 500;
+}
+.app-shell .sidebar .nav-item.active,
+.app-shell .sidebar .nav-item.active:hover {
+  color: var(--text);
+  background: radial-gradient(ellipse at 80% 100%, #52e8c420, transparent 70%), var(--material-control);
+  box-shadow: inset 0 1px 1px #daffef30, inset 0 -1px 1px #52ebce2b, 0 4px 12px #00000020;
+}
+.app-shell .sidebar .theme-switch {
+  border-radius: 999px;
+  padding: 3px;
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  box-shadow: var(--material-inset);
+}
+.app-shell .sidebar .theme-switch button { min-width: 44px; min-height: 44px; border-radius: 50%; }
+.app-shell .sidebar .theme-switch button[aria-pressed="true"] {
+  color: var(--text);
+  background: var(--material-control);
+  box-shadow: var(--material-rim), 0 3px 8px #00000020;
+}
+.app-shell .topbar .breadcrumbs { font-size: 11px; letter-spacing: .025em; }
+.app-shell .topbar .breadcrumbs b { color: var(--soft); font-weight: 500; }
+.app-shell .topbar .top-clock { font-size: 11px; }
+.app-shell .topbar .icon-btn {
+  min-width: 44px; min-height: 44px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 1px #ffffff08;
+}
+.app-shell .topbar .avatar {
+  width: 32px; height: 32px;
+  color: var(--soft);
+  background: var(--material-control);
+  border: 1px solid var(--line);
+  box-shadow: var(--material-rim);
+}
+
+/* Hero shortcuts resemble small illuminated objects, with depth at the rim. */
+.app-shell .market-hero { min-height: 0; padding: 36px 24px 44px; gap: clamp(38px, 5vw, 78px); margin-bottom: 26px; }
+.app-shell .hero-label { font-size: 9px; letter-spacing: .18em; color: var(--muted-foreground); margin-bottom: 23px; }
+.app-shell .hero-label .dot { box-shadow: 0 0 12px color-mix(in srgb, var(--accent-green) 45%, transparent); }
+.app-shell .hero-copy h1 { font-size: clamp(43px, 4.45vw, 64px); font-weight: 620; line-height: 1.035; letter-spacing: -.065em; }
+html:root .app-shell .hero-copy h1 em {
+  background-image: linear-gradient(108deg, #56edc7 8%, #aff1cf 49%, #a995ea 96%);
+  -webkit-background-clip: text; background-clip: text;
+}
+html:root:not([data-theme="dark"]) .app-shell .hero-copy h1 em { background-image: linear-gradient(108deg, #147d74, #35687d 52%, #7d55b5); }
+.app-shell .hero-copy > p { font-size: 14px; line-height: 1.9; margin-top: 23px; color: var(--soft); }
+.app-shell .hero-explore {
+  display: inline-flex; align-items: center; justify-content: space-between;
+  min-height: 46px; padding: 11px 18px; margin-top: 26px; gap: 24px;
+  font-size: 12px; font-weight: 550; color: var(--text);
+  border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent-green) 20%, var(--line));
+  background: radial-gradient(ellipse at 25% 0, #6becd31c, transparent 85%), var(--material-control);
+  box-shadow: var(--material-rim), 0 5px 12px #00000014;
+}
+.app-shell .hero-cards { gap: 13px; }
+html:root .app-shell .hero-glass {
+  min-height: 86px; padding: 17px 19px; gap: 15px;
+  border-radius: 23px; border: 1px solid var(--line);
+  background: radial-gradient(ellipse at 0 0, #58e6d00c, transparent 70%), var(--material-card);
+  box-shadow: var(--material-rim), var(--material-shadow);
+  backdrop-filter: blur(20px);
+}
+html:root .app-shell .hero-glass:nth-child(2) { background: radial-gradient(ellipse at 0 100%, #aa70ef15, transparent 70%), var(--material-card); }
+html:root .app-shell .hero-glass:nth-child(3) { background: radial-gradient(ellipse at 0 100%, #50f2b511, transparent 70%), var(--material-card); }
+.app-shell .hero-glass strong { font-size: 13px; font-weight: 550; letter-spacing: -.025em; }
+.app-shell .hero-glass strong svg { width: 13px; opacity: .62; }
+html:root .app-shell .hero-glass small { font-size: 10px; line-height: 1.65; color: var(--muted-foreground); margin-top: 5px; }
+.app-shell .hero-icon {
+  --icon-light: #5ddfc9;
+  width: 43px; height: 43px; flex-basis: 43px; border-radius: 15px;
+  color: var(--icon-light);
+  border: 1px solid color-mix(in srgb, var(--icon-light) 13%, transparent);
+  background: radial-gradient(ellipse at 50% 115%, color-mix(in srgb, var(--icon-light) 34%, transparent), transparent 65%), linear-gradient(140deg, #ffffff09, #ffffff02);
+  box-shadow: inset 0 1px #ffffff17, 0 5px 11px #00000019;
+}
+.app-shell .hero-icon.violet { --icon-light: #b58afc; }
+.app-shell .hero-icon.mint { --icon-light: #53e9b7; }
+.app-shell .hero-icon svg { filter: drop-shadow(0 0 7px color-mix(in srgb, var(--icon-light) 36%, transparent)); }
+html:root:not([data-theme="dark"]) .app-shell .hero-icon { color: #087e76; }
+html:root:not([data-theme="dark"]) .app-shell .hero-icon.violet { color: #7651b8; }
+.app-shell .hero-metrics { gap: 13px; margin-top: 7px; }
+html:root .app-shell .hero-metric {
+  display: grid; grid-template-columns: minmax(0, 1fr) 8px; align-items: start;
+  gap: 8px 5px; padding: 18px 16px 16px; border-radius: 23px;
+  border: 1px solid var(--line); background: var(--material-card);
+  box-shadow: var(--material-rim), var(--material-shadow);
+}
+.app-shell .hero-metric .metric-dot { grid-column: 2; grid-row: 1; width: 6px; height: 6px; margin: 7px 0 0; box-shadow: 0 0 9px currentColor; }
+html:root .app-shell .hero-metric strong {
+  grid-column: 1; grid-row: 1; color: var(--text); font-size: 35px; font-weight: 500;
+  letter-spacing: -.055em; font-variant-numeric: tabular-nums;
+}
+.app-shell .hero-metric small { grid-column: 1 / -1; margin: 0; font-size: 10px; line-height: 1.55; color: var(--muted-foreground); }
+.app-shell .page-heading { margin-bottom: 27px; }
+.app-shell .page-heading h1 { font-size: 38px; font-weight: 600; letter-spacing: -.055em; line-height: 1.15; }
+.app-shell .page-heading p { margin-top: 10px; font-size: 13px; line-height: 1.75; color: var(--soft); }
+.app-shell .page-heading .eyebrow { font-size: 9px; letter-spacing: .17em; }
+.app-shell .page-heading .auto-btn { font-size: 11px; }
+
+/* Large panels retain a crisp reading surface inside a sculpted perimeter. */
+.app-shell :is(.asset-panel, .news-panel, .security-chart, .pulse-panel, .brief-panel, .sources-directory, .market-strip) {
+  border-radius: 27px;
+  border: 1px solid var(--line);
+  background: var(--material-card);
+  box-shadow: var(--material-rim), var(--material-shadow);
+}
+.app-shell :is(.asset-panel, .news-panel, .security-chart, .sources-directory) > .panel-header { padding: 26px 26px 21px; }
+.app-shell :is(.asset-panel, .news-panel, .security-chart, .sources-directory) > .panel-header h2 {
+  font-size: 21px; font-weight: 570; letter-spacing: -.035em;
+}
+.app-shell :is(.asset-panel, .news-panel, .sources-directory) .kicker { font-size: 9px; letter-spacing: .15em; margin-bottom: 7px; }
+.app-shell .counter {
+  border-radius: 999px; padding: 2px 8px; font-size: 10px; line-height: 18px;
+  color: var(--soft); background: var(--surface-2); box-shadow: inset 0 1px #ffffff09;
+}
+.app-shell .market-strip .strip-label { background: color-mix(in srgb, var(--surface-2) 65%, transparent); }
+.app-shell .market-strip .market-stat { padding: 20px 23px; }
+.app-shell .market-strip .market-stat strong { font-size: 27px; font-weight: 500; }
+.app-shell .market-strip .market-stat > span { font-size: 10px; letter-spacing: .035em; }
+.app-shell .market-strip .market-stat small { font-size: 9px; }
+.app-shell .asset-panel .panel-footnote,
+.app-shell .pulse-panel .panel-footnote { font-size: 10px; line-height: 1.85; padding-top: 15px; padding-bottom: 15px; color: var(--muted-foreground); }
+.app-shell .asset-panel th {
+  padding-top: 13px; padding-bottom: 13px;
+  background: color-mix(in srgb, var(--bg) 35%, transparent);
+  font-size: 9px; letter-spacing: .065em; font-weight: 500; color: var(--muted-foreground);
+}
+.app-shell .asset-panel td { padding-top: 15px; padding-bottom: 15px; }
+.app-shell .asset-panel .asset-row { transition: background-color 240ms var(--ease-soft), box-shadow 240ms var(--ease-soft); }
+.app-shell .asset-panel .asset-row[data-selected="true"] {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent-green) 10%, transparent), transparent 85%);
+  box-shadow: inset 3px 0 var(--accent-green);
+}
+.app-shell .asset-panel .asset-row:has(:focus-visible) { background-color: var(--green-soft); box-shadow: inset 3px 0 var(--accent-green); }
+.app-shell .asset-panel .asset-name { gap: 13px; min-height: 44px; width: 100%; text-align: left; border-radius: 12px; }
+.app-shell .asset-panel .asset-name b { font-size: 14px; font-weight: 600; letter-spacing: -.02em; }
+.app-shell .asset-panel .asset-name small { font-size: 11px; line-height: 1.5; margin-top: 5px; color: var(--muted-foreground); }
+.app-shell .asset-panel .exchange { font-size: 8px; letter-spacing: .035em; }
+.app-shell .asset-panel .region-tag,
+.app-shell .asset-panel .sector-label { color: var(--soft); font-size: 11px; line-height: 1.65; }
+.app-shell .asset-panel :is(.chart-link, .icon-btn) { min-width: 44px; min-height: 44px; border-radius: 14px; }
+.app-shell .asset-panel .chart-link { padding: 9px; gap: 2px; }
+.app-shell .asset-panel .chart-link > svg:first-child { width: 20px; height: 20px; }
+.app-shell .asset-panel .pagination { padding: 17px 23px; font-size: 11px; }
+.app-shell .asset-panel .pagination .btn {
+  min-height: 44px; border-radius: 999px; background: var(--material-control);
+  border: 1px solid var(--line); box-shadow: var(--material-rim), 0 4px 8px #00000012;
+}
+
+/* Inputs are recessed; actionable pills sit above the surface. */
+.app-shell :is(.asset-panel, .news-panel, .sources-directory) .field-search {
+  min-height: 46px; padding: 11px 14px; gap: 10px; border-radius: 15px;
+  background: color-mix(in srgb, var(--bg) 44%, var(--surface));
+  border: 1px solid var(--line); box-shadow: var(--material-inset);
+}
+.app-shell :is(.asset-panel, .news-panel, .sources-directory) .field-search input { font-size: 12px; }
+.app-shell :is(.asset-panel, .news-panel, .sources-directory) .field-search:focus-within {
+  border-color: color-mix(in srgb, var(--accent-green) 42%, var(--line));
+  box-shadow: var(--material-inset), 0 0 0 3px color-mix(in srgb, var(--accent-green) 8%, transparent);
+}
+.app-shell :is(.asset-panel, .sources-directory) .filter-bar select {
+  min-height: 46px; border-radius: 15px; font-size: 11px; background-color: var(--surface-2);
+  border-color: var(--line); box-shadow: inset 0 1px #ffffff0c, 0 4px 8px #00000010;
+}
+.app-shell .text-link { min-height: 44px; }
+.app-shell .news-panel .news-tabs { gap: 22px !important; height: 48px !important; }
+.app-shell .news-panel .news-tabs button { min-height: 44px; font-size: 11px !important; font-weight: 500; }
+.app-shell .news-panel .news-item { margin: 0 26px; padding: 27px 0; gap: 16px; }
+.app-shell .news-panel .news-number {
+  width: 35px; height: 35px; border-radius: 13px;
+  color: var(--purple); background: radial-gradient(ellipse at 50% 120%, #a177f224, transparent 75%), var(--material-control);
+  border: 1px solid var(--line); box-shadow: inset 0 1px #ffffff12; font-size: 11px;
+}
+.app-shell .news-panel .news-meta { font-size: 10px; line-height: 1.7; gap: 8px; }
+.app-shell .news-panel .news-meta b { color: var(--purple); font-weight: 550; }
+.app-shell .news-panel .news-category { font-size: 9px; }
+.app-shell .news-panel .news-item h3 { font-size: 18px; line-height: 1.5; font-weight: 550; letter-spacing: -.025em; margin-top: 11px; }
+.app-shell .news-panel .news-item h3 > svg { width: 16px; opacity: .55; }
+.app-shell .news-panel .story-brief { margin-top: 12px; margin-bottom: 13px; }
+.app-shell .news-panel .story-brief > p { font-size: 13px; line-height: 1.85; color: var(--soft); }
+.app-shell .news-panel :is(.brief-caption, .brief-seen) { font-size: 10px; line-height: 1.8; }
+.app-shell .news-panel .brief-original { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; font-weight: 500; margin-top: 5px; }
+.app-shell .news-panel .news-tags { gap: 8px; margin-top: 14px; }
+.app-shell .news-panel .sentiment {
+  padding: 8px 10px; border-radius: 999px; font-size: 9px;
+  background: var(--material-control); border: 1px solid var(--line); box-shadow: inset 0 1px #ffffff0c;
+}
+.app-shell .news-panel .sentiment.positive { background: linear-gradient(115deg, #28e22f06, #28e22f1c); border-color: #28e22f24; }
+.app-shell .news-panel .sentiment.negative { background: linear-gradient(115deg, #e3263606, #e326361c); border-color: #e326362a; }
+.app-shell .news-panel .news-tags button {
+  min-height: 44px; padding: 9px 12px; border-radius: 999px; gap: 5px; font-size: 10px;
+  background: var(--material-control); border: 1px solid var(--line); color: var(--soft);
+  box-shadow: inset 0 1px #ffffff0e, 0 3px 7px #00000010;
+}
+.app-shell .news-panel .all-news { min-height: 57px; font-size: 12px; font-weight: 500; background: linear-gradient(0deg, #52e8c405, transparent); }
+
+/* The side column shares the material, while the focus card carries violet light. */
+.app-shell .focus-card {
+  padding: 27px 24px; border-radius: 27px; color: var(--text); border: 1px solid var(--line);
+  background: radial-gradient(ellipse at 85% 0, #be90ff26, transparent 60%), radial-gradient(ellipse at 10% 100%, #56e8c514, transparent 60%), var(--material-card);
+  box-shadow: var(--material-rim), var(--material-shadow);
+}
+.app-shell .focus-card::after { opacity: .25; }
+.app-shell .focus-card .focus-star { color: var(--purple); filter: drop-shadow(0 0 9px #be90ff55); }
+.app-shell .focus-card .focus-top > span:last-child { color: var(--muted-foreground); font-size: 8px; letter-spacing: .14em; }
+.app-shell .focus-card h2 { font-size: 28px; font-weight: 500; letter-spacing: -.045em; line-height: 1.25; }
+.app-shell .focus-card h2 em { color: var(--accent-green); }
+.app-shell .focus-card > p { font-size: 12px; line-height: 1.85; color: var(--soft); }
+.app-shell .focus-card .focus-stats { border-color: var(--line); padding-block: 20px; }
+.app-shell .focus-card .focus-stats > div:last-child { border-color: var(--line); }
+.app-shell .focus-card .focus-stats strong { font-size: 30px; font-weight: 500; color: var(--text); letter-spacing: -.045em; }
+.app-shell .focus-card .focus-stats small { font-size: 10px; color: var(--muted-foreground); }
+.app-shell .focus-card > button {
+  min-height: 46px; padding: 11px 14px; border-radius: 999px; font-size: 11px; color: var(--text);
+  background: radial-gradient(ellipse at 100% 0, #65ecc426, transparent 80%), var(--material-control);
+  border: 1px solid color-mix(in srgb, var(--accent-green) 18%, var(--line));
+  box-shadow: var(--material-rim), 0 4px 11px #00000014;
+}
+.app-shell :is(.pulse-panel, .brief-panel) .panel-header h2 { font-size: 16px; font-weight: 550; }
+.app-shell .pulse-panel .radar-row { min-height: 70px; padding: 14px 20px; gap: 12px; }
+.app-shell .pulse-panel .radar-row b { font-weight: 550; }
+.app-shell .pulse-panel .radar-row small { font-size: 10px; line-height: 1.6; }
+.app-shell .pulse-panel .radar-row > svg:not(.asset-icon) { width: 15px; opacity: .65; }
+.app-shell .source-summary-link {
+  min-height: 44px; padding: 10px 17px; border-radius: 999px; border-color: var(--line);
+  background: linear-gradient(120deg, #56e6c20b, #b090ff08), var(--surface);
+  box-shadow: inset 0 1px #ffffff07; color: var(--muted-foreground); font-size: 10px; line-height: 1.8;
+}
+.app-shell .source-summary-link strong { color: var(--soft); font-size: 11px; font-weight: 550; }
+.app-shell .data-status { font-size: 10px; line-height: 1.8; color: var(--muted-foreground); }
+.app-shell .data-status > span { flex-wrap: wrap; }
+.app-shell .sources-directory .source-entry {
+  border-radius: 18px; border-color: var(--line); background: color-mix(in srgb, var(--surface) 78%, transparent);
+  box-shadow: inset 0 1px #ffffff07, 0 3px 7px #00000009;
+}
+.app-shell .sources-directory .source-entry > div > b { font-weight: 550; }
+.app-shell .sources-directory .source-entry small { line-height: 1.85; }
+.app-shell .content > footer { font-size: 10px; padding-block: 24px; color: var(--muted-foreground); }
+
+@media (hover:hover) and (pointer:fine) {
+  .app-shell .sidebar .nav-item:hover { color: var(--text); }
+  html:root .app-shell .hero-glass:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent-green) 26%, var(--line));
+    box-shadow: var(--material-rim), 0 21px 32px -19px #0008, 0 0 25px -15px #59e8c470;
+  }
+  .app-shell .hero-explore:hover,
+  .app-shell .focus-card > button:hover { border-color: color-mix(in srgb, var(--accent-green) 50%, var(--line)); box-shadow: var(--material-rim), 0 5px 20px #50ecc51c; }
+  .app-shell .asset-panel .asset-row:hover { background-color: color-mix(in srgb, var(--accent-green) 5%, transparent); }
+  .app-shell .asset-panel .chart-link:hover { background: var(--green-soft); }
+  .app-shell .news-panel .news-tags button:hover { color: var(--text); border-color: color-mix(in srgb, var(--purple) 40%, var(--line)); }
+  .app-shell .news-panel .brief-original:hover { text-decoration: underline; text-underline-offset: 4px; }
+}
+@media (min-width:1101px) {
+  .app-shell .sidebar { gap: 22px; }
+  .app-shell .sidebar .nav-item { font-size: 11px; padding: 11px 12px; }
+}
+@media (min-width:761px) and (max-width:1100px) {
+  .app-shell .market-hero { padding: 24px 4px 35px; gap: 30px; }
+  .app-shell .hero-copy h1 { font-size: 49px; }
+  .app-shell .sidebar .theme-switch button { border-radius: 999px; }
+}
+@media (max-width:760px) {
+  .app-shell .market-hero { padding: 20px 3px 30px; margin-bottom: 18px; gap: 30px; }
+  .app-shell .hero-label { font-size: 8px; margin-bottom: 19px; }
+  .app-shell .hero-copy h1 { font-size: 45px; line-height: 1.05; }
+  .app-shell .hero-copy > p { font-size: 13px; line-height: 1.85; margin-top: 18px; }
+  .app-shell .hero-explore { margin-top: 22px; }
+  .app-shell .hero-cards { gap: 11px; }
+  html:root .app-shell .hero-glass { min-height: 79px; padding: 16px 13px; gap: 11px; border-radius: 21px; }
+  .app-shell .hero-glass strong { font-size: 11px; line-height: 1.5; }
+  html:root .app-shell .hero-glass small { font-size: 10px; line-height: 1.65; }
+  .app-shell .hero-icon { width: 35px; height: 35px; flex-basis: 35px; border-radius: 12px; }
+  .app-shell .hero-icon svg { width: 19px; height: 19px; }
+  .app-shell .hero-metrics { gap: 10px; margin-top: 6px; }
+  html:root .app-shell .hero-metric { padding: 17px 12px 14px; border-radius: 20px; gap: 8px 3px; }
+  html:root .app-shell .hero-metric strong { font-size: 29px; }
+  .app-shell .hero-metric small { font-size: 9px; line-height: 1.6; }
+  .app-shell .page-heading h1 { font-size: 31px; }
+  .app-shell .page-heading p { font-size: 12px; }
+  .app-shell :is(.asset-panel, .news-panel, .security-chart, .pulse-panel, .brief-panel, .sources-directory, .market-strip) { border-radius: 24px; }
+  .app-shell :is(.asset-panel, .news-panel, .security-chart, .sources-directory) > .panel-header { padding: 22px 18px 18px; }
+  .app-shell :is(.asset-panel, .news-panel, .security-chart, .sources-directory) > .panel-header h2 { font-size: 19px; }
+  .app-shell .source-summary-link { padding: 12px 17px; border-radius: 19px; }
+  .app-shell .news-panel .news-item { margin: 0 18px; gap: 12px; padding: 24px 0; }
+  .app-shell .news-panel .news-item h3 { font-size: 16px; line-height: 1.6; }
+  .app-shell .news-panel .news-tabs { gap: 20px !important; }
+  .app-shell .topbar :is(.mobile-menu, .mobile-theme) { min-width: 44px; min-height: 44px; }
+  .app-shell .market-strip .market-stat { padding: 16px; }
+  .app-shell .market-strip .market-stat strong { font-size: 23px; }
+}
+@media (max-width:480px) {
+  .app-shell .hero-copy h1 { font-size: 43px; }
+  .app-shell .hero-glass strong svg { width: 11px; }
+  .app-shell .asset-panel td { padding: 13px 9px; }
+  .app-shell .asset-panel th { padding: 12px 9px; font-size: 8px; letter-spacing: .025em; }
+  .app-shell .asset-panel .asset-name { gap: 9px; }
+  .app-shell .asset-panel .asset-name b { font-size: 13px; }
+  .app-shell .asset-panel .asset-name small { font-size: 10px; }
+  .app-shell .asset-panel .chart-link { padding: 8px 5px; }
+  .app-shell .asset-panel .pagination { padding: 15px 13px; }
+  .app-shell .asset-panel .pagination .btn { font-size: 10px; padding-inline: 11px; }
+  .app-shell .news-panel .news-item { margin-inline: 17px; }
+  .app-shell .news-panel .news-number { display: none; }
+  .app-shell .news-panel .news-tags { gap: 6px; }
+  .app-shell .focus-card { padding: 26px 23px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html:root .app-shell .hero-glass:hover { transform: none; }
+  .app-shell .asset-panel .asset-row { transition: none; }
+}

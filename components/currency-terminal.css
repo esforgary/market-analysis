@@ -1,0 +1,130 @@
+.currency-terminal{--fx-up:#28e22f;--fx-down:#e32636;--fx-trend:var(--fx-up);position:relative;isolation:isolate;overflow:hidden;border-radius:28px;background:radial-gradient(ellipse at 100% 0,color-mix(in srgb,var(--fx-trend) 5%,transparent),transparent 42%),linear-gradient(155deg,color-mix(in srgb,var(--surface) 92%,white),var(--surface));box-shadow:inset 0 1px 0 #ffffff70,0 20px 45px #1519250a}
+.currency-terminal[data-trend="down"]{--fx-trend:var(--fx-down)}
+:root[data-theme=dark] .currency-terminal{background:radial-gradient(ellipse at 100% 0,color-mix(in srgb,var(--fx-trend) 7%,transparent),transparent 42%),linear-gradient(150deg,#242629,#181a1d 60%,#141619);border-color:#ffffff14;box-shadow:inset 0 1px 0 #ffffff20,inset 0 -1px 0 #0005,0 24px 45px #0002}
+.currency-terminal .currency-panel-header{align-items:center;gap:20px;padding:26px 26px 21px}
+.currency-terminal .currency-panel-header .kicker{margin-bottom:8px;font-size:9px;letter-spacing:.16em}
+.currency-terminal .currency-panel-header h2{font-size:20px;letter-spacing:-.035em}
+.currency-terminal .fx-view-toggle{display:inline-flex;flex-shrink:0;gap:3px;padding:4px;border:1px solid var(--line);border-radius:999px;background:linear-gradient(170deg,color-mix(in srgb,var(--surface-2) 90%,white 4%),color-mix(in srgb,var(--surface-2) 65%,transparent));box-shadow:inset 0 1px 5px #0000000d}
+.currency-terminal .fx-view-toggle button{display:flex;align-items:center;justify-content:center;gap:5px;min-height:34px;padding:7px 13px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--muted-foreground);font-size:10px;white-space:nowrap;transition:color 230ms ease,background-color 230ms ease,border-color 230ms ease,box-shadow 230ms ease,transform 230ms ease}
+.currency-terminal .fx-view-toggle button[aria-pressed="true"]{border-color:var(--line);background:var(--surface-3);color:var(--text);box-shadow:inset 0 1px 0 #ffffff17,0 3px 8px #00000018}
+.currency-terminal .fx-view-toggle button:hover{color:var(--text)}
+.fx-pair-workbench{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:0 26px 22px;border-bottom:1px solid var(--line)}
+.fx-pair-controls{display:flex;align-items:center;gap:8px;min-width:0}
+.fx-pair-select{display:flex;align-items:center;gap:6px;width:114px;min-width:0;padding:5px 9px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(165deg,color-mix(in srgb,var(--surface-2) 92%,white 4%),color-mix(in srgb,var(--surface-2) 50%,transparent));box-shadow:inset 0 1px 0 #ffffff0c,0 4px 12px #00000009;transition:background-color 230ms ease,border-color 230ms ease}
+.fx-pair-select:hover,.fx-pair-select:focus-within{border-color:color-mix(in srgb,var(--accent-green) 42%,var(--line));background:var(--surface-2)}
+.fx-pair-select:focus-within{outline:2px solid color-mix(in srgb,var(--accent-green) 40%,transparent);outline-offset:2px}
+.fx-select-icon{display:block;flex:0 0 26px;width:26px;height:26px;color:var(--soft)}
+.fx-pair-select select{width:64px;min-width:0;height:30px;padding:0;background:transparent;border:0;border-radius:0;color:var(--text);font-size:12px;font-weight:600;letter-spacing:.02em;outline:none}
+.fx-pair-select option{background:var(--surface-2);color:var(--text)}
+.fx-swap-button{display:grid;place-items:center;flex:0 0 31px;width:31px;height:34px;padding:0;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--muted-foreground);transition:color 240ms ease,background-color 240ms ease,border-color 240ms ease,transform 320ms cubic-bezier(.22,1,.36,1)}
+.fx-swap-button:hover{border-color:var(--line);background:var(--surface-2);color:var(--accent-green)}
+.fx-swap-button:active{transform:rotate(12deg) scale(.94)}
+.fx-period-tabs{display:inline-flex;align-items:center;gap:3px;padding:3px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--surface-2) 35%,transparent);box-shadow:inset 0 1px 5px #0000000d}
+.fx-period-tabs button{display:grid;place-items:center;min-width:31px;min-height:33px;padding:5px 10px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--muted-foreground);font-size:10px;font-weight:500;font-variant-numeric:tabular-nums;transition:color 240ms ease,background-color 240ms ease,border-color 240ms ease,box-shadow 240ms ease,transform 280ms cubic-bezier(.22,1,.36,1)}
+.fx-period-tabs button[aria-pressed="true"]{border-color:color-mix(in srgb,var(--accent-green) 20%,var(--line));background:linear-gradient(130deg,color-mix(in srgb,var(--accent-green) 12%,var(--surface)),color-mix(in srgb,var(--accent-green) 5%,var(--surface)));color:var(--accent-green);box-shadow:inset 0 1px 0 #ffffff1a,0 2px 9px #00000014}
+.fx-period-tabs button:hover{background:var(--surface-2);color:var(--text)}
+.fx-period-tabs button:active,.currency-terminal .fx-view-toggle button:active{transform:scale(.95)}
+.fx-pair-workbench button:focus-visible,.fx-view-toggle button:focus-visible,.fx-source-footer a:focus-visible{outline:2px solid var(--accent-green);outline-offset:3px}
+.fx-quote-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:26px 26px 8px}
+.fx-quote-main{min-width:0}
+.fx-quote-label{margin-bottom:10px;color:var(--soft);font-size:11px;font-weight:550;letter-spacing:.05em}
+.fx-quote-label>span{margin:0 4px;color:var(--muted-foreground);opacity:.65}
+.fx-quote-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:9px;color:var(--text);font-size:clamp(33px,4vw,48px);font-weight:580;letter-spacing:-.06em;font-variant-numeric:tabular-nums;line-height:1.05}
+.fx-quote-price>span{font-size:13px;font-weight:450;letter-spacing:0;color:var(--muted-foreground)}
+.fx-quote-context{margin:11px 0 0;color:var(--muted-foreground);font-size:10px;line-height:1.6}
+.fx-quote-context>span{margin:0 4px;opacity:.65}
+.fx-quote-side{display:flex;align-items:flex-end;flex-direction:column;flex-shrink:0;gap:7px;padding-top:21px;text-align:right}
+.fx-quote-change{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:7px 9px;border:1px solid color-mix(in srgb,var(--fx-up) 14%,transparent);border-radius:999px;background:linear-gradient(120deg,color-mix(in srgb,var(--fx-up) 4%,transparent),color-mix(in srgb,var(--fx-up) 13%,transparent));box-shadow:inset 0 1px 0 #ffffff14,0 0 18px color-mix(in srgb,var(--fx-up) 5%,transparent);font-size:12px;font-weight:550;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.currency-terminal .fx-quote-change.positive{color:var(--fx-up)}
+.currency-terminal .fx-quote-change.negative{color:var(--fx-down);border-color:color-mix(in srgb,var(--fx-down) 16%,transparent);background:linear-gradient(120deg,color-mix(in srgb,var(--fx-down) 4%,transparent),color-mix(in srgb,var(--fx-down) 14%,transparent));box-shadow:inset 0 1px 0 #ffffff14,0 0 18px color-mix(in srgb,var(--fx-down) 5%,transparent)}
+.fx-change-caption{font-size:10px;color:var(--muted-foreground)}
+.fx-observation-date{font-size:9px;color:var(--muted-foreground);opacity:.8}
+.currency-terminal .fx-chart{height:320px;margin:0;padding:4px 12px 0 20px}
+.currency-terminal .currency-chart-view{height:100%;min-width:0}
+.currency-terminal .recharts-wrapper{outline:none}
+.currency-terminal .recharts-surface:focus-visible{outline:1px dashed var(--line);outline-offset:-2px}
+.currency-terminal .recharts-tooltip-wrapper{z-index:4;outline:none}
+.fx-rate-tooltip{min-width:155px;padding:14px 16px;border:1px solid var(--line);border-radius:17px;background:color-mix(in srgb,var(--surface-2) 96%,transparent);backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 #ffffff14,0 10px 36px #0003;color:var(--text)}
+.fx-rate-tooltip>span{display:block;margin-bottom:9px;color:var(--muted-foreground);font-size:10px}
+.fx-rate-tooltip strong{display:flex;align-items:center;gap:7px;font-size:19px;font-weight:550;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.fx-rate-tooltip strong>i{display:block;width:6px;height:6px;border-radius:50%;box-shadow:0 0 7px currentColor}
+.fx-rate-tooltip strong>small{display:inline;font-size:10px;font-weight:400;letter-spacing:0;color:var(--muted-foreground)}
+.fx-rate-tooltip>p{margin:5px 0 0 13px;color:var(--soft);font-size:10px}
+.fx-source-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:17px 26px 19px;margin-top:10px;border-top:1px solid var(--line);color:var(--muted-foreground);font-size:9px;line-height:1.6}
+.fx-source-main{display:flex;align-items:center;flex-wrap:wrap;gap:13px}
+.fx-source-main a{display:inline-flex;align-items:center;gap:4px;color:var(--soft);text-decoration:none;transition:color 240ms ease}
+.fx-source-main a:hover{color:var(--accent-green)}
+.fx-source-main>span{display:inline-flex;align-items:center;gap:5px}
+.fx-check-status{display:flex;align-items:center;flex-wrap:wrap;gap:4px;font-variant-numeric:tabular-nums}
+.fx-check-status>.dot{width:5px;height:5px;margin-right:2px;box-shadow:none}
+.fx-check-interval{opacity:.8}
+.currency-terminal .fx-chart-empty{height:100%;gap:10px;padding:35px 18px}
+.currency-terminal .fx-chart-empty>svg{margin-bottom:7px;color:var(--purple);opacity:.75}
+.currency-terminal .fx-chart-empty h3{font-size:14px}
+.currency-terminal .fx-chart-empty p{max-width:280px;font-size:11px}
+.currency-terminal>.currency-mode-view>.trading-wrap{padding-top:8px}
+.currency-list .currency-tile{border-radius:18px;background:linear-gradient(145deg,color-mix(in srgb,var(--surface-2) 24%,transparent),transparent);box-shadow:inset 0 1px 0 #ffffff09;transition:background-color 260ms ease,border-color 260ms ease,box-shadow 260ms ease,transform 300ms cubic-bezier(.22,1,.36,1)}
+.currency-list .currency-tile:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #ffffff12,0 8px 20px #00000012}
+.currency-list .currency-tile:active{transform:translateY(0) scale(.99)}
+.currency-list .currency-tile.selected{border-color:color-mix(in srgb,var(--accent-green) 34%,var(--line));background:linear-gradient(120deg,color-mix(in srgb,var(--accent-green) 7%,transparent),color-mix(in srgb,var(--purple) 5%,transparent))}
+
+.currency-rate-source{display:inline-block;margin-left:5px;padding-left:5px;border-left:1px solid var(--line);font-size:8px;color:var(--muted-foreground)}
+.currency-catalog-note{margin:0;padding:15px 24px;color:var(--muted-foreground);font-size:10px;line-height:1.7}
+.currency-catalog-note:last-child{border-top:1px solid var(--line)}
+.currency-list .currency-grid{padding:0 12px 12px;gap:6px}
+.currency-list .currency-tile.selected{box-shadow:inset 0 1px 0 #ffffff13,0 0 20px color-mix(in srgb,var(--accent-green) 5%,transparent)}
+.currency-list .currency-identity{min-width:0}
+.currency-list .currency-identity small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.currency-list .currency-value{flex-shrink:0}
+:root[data-theme=light] .currency-terminal .fx-quote-change.positive{color:#157a1a}
+:root[data-theme=light] .currency-terminal .fx-quote-change.negative{color:#b71928}
+:root[data-theme=light] .currency-terminal .fx-rate-tooltip{background:#f5f7fbf5;box-shadow:inset 0 1px 0 white,0 10px 36px #16203016}
+@media(max-width:680px){
+ .currency-terminal{border-radius:24px}
+ .currency-terminal .currency-panel-header{align-items:flex-start;flex-wrap:wrap;padding:22px 20px 18px;gap:16px}
+ .currency-terminal .currency-panel-header h2{font-size:18px}
+ .fx-pair-workbench{padding:0 20px 20px;gap:14px}
+ .fx-quote-header{padding:23px 20px 8px}
+ .currency-terminal .fx-chart{height:300px;padding-left:14px;padding-right:8px}
+ .fx-source-footer{padding:15px 20px 17px;gap:9px}
+ .fx-quote-price{font-size:40px}
+}
+@media(max-width:480px){
+ .currency-terminal .currency-panel-header{padding:20px 17px 18px;gap:14px}
+ .currency-terminal .fx-view-toggle{width:100%;justify-content:stretch}
+ .currency-terminal .fx-view-toggle button{flex:1;min-height:38px;font-size:10px;padding:7px}
+ .fx-pair-workbench{flex-direction:column;align-items:stretch;gap:14px;padding:0 17px 18px}
+ .fx-pair-controls{justify-content:space-between;width:100%;gap:10px}
+ .fx-pair-select{flex:1;width:auto;justify-content:space-between;max-width:calc(50% - 26px);padding:6px 10px}
+ .fx-pair-select select{flex:1;max-width:80px}
+ .fx-select-icon{width:27px;height:27px;flex-basis:27px}
+ .fx-period-tabs{display:flex;align-self:stretch;gap:5px}
+ .fx-period-tabs button{flex:1;min-height:36px}
+ .fx-swap-button{height:42px}
+ .currency-list .currency-grid{padding:0 8px 8px}
+ .currency-list .currency-tile{padding:14px 12px;gap:9px}
+ .currency-catalog-note{padding:13px 17px}
+ .fx-quote-header{gap:10px;padding:23px 17px 7px}
+ .fx-quote-label{font-size:10px;margin-bottom:10px}
+ .fx-quote-price{font-size:35px;gap:6px}
+ .fx-quote-price>span{font-size:11px}
+ .fx-quote-context{max-width:210px;font-size:9px}
+ .fx-quote-side{padding-top:22px;gap:7px}
+ .fx-quote-change{gap:2px;padding:7px;font-size:10px;border-radius:999px}
+ .fx-quote-change>svg{width:14px;height:14px}
+ .fx-change-caption{font-size:9px}
+ .fx-observation-date{font-size:8px}
+ .currency-terminal .fx-chart{height:270px;padding:3px 3px 0 9px}
+ .fx-source-footer{align-items:flex-start;gap:8px;padding:14px 17px 16px;font-size:9px}
+ .fx-source-main{gap:12px}
+ .fx-check-status{width:100%}
+ .fx-rate-tooltip{min-width:142px;padding:12px 13px}
+ .fx-rate-tooltip strong{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){
+ .currency-terminal .fx-view-toggle button,.fx-pair-select,.fx-swap-button,.fx-period-tabs button,.fx-source-main a,.currency-list .currency-tile{transition:none!important}
+ .fx-swap-button:active,.fx-period-tabs button:active,.currency-terminal .fx-view-toggle button:active,.currency-list .currency-tile:hover,.currency-list .currency-tile:active{transform:none}
+}
+
+
+.currency-terminal .fx-period-tabs button,.currency-terminal .fx-view-toggle button{min-height:40px;min-width:40px}.currency-terminal .fx-swap-button{width:40px;height:40px;flex-basis:40px}.currency-terminal .fx-pair-select{min-height:44px;position:relative}.currency-terminal .fx-pair-select select{position:absolute;inset:0;width:100%;max-width:none;height:100%;padding-left:40px;padding-right:9px;border-radius:inherit}.currency-terminal .fx-select-icon{pointer-events:none}.currency-terminal .fx-quote-price{overflow-wrap:anywhere;word-break:normal;max-width:100%}@media(max-width:760px){.currency-terminal .fx-period-tabs button,.currency-terminal .fx-view-toggle button{min-height:44px}.currency-terminal .fx-swap-button{width:44px;height:44px;flex-basis:44px}}

@@ -95,7 +95,7 @@ export default function FloatingRates({rates,onSelect,view}:FloatingRatesProps){
      <span className="floating-rate-date">{rate?<><time dateTime={rate.date}>{rate.date}</time><span>D1</span></>:'Ожидание источника'}</span>
     </button>;
    })}</div>
-   <div className="floating-rates-note"><Clock3 size={12}/><span>Дневные курсы<small>Frankfurter · за 1 EUR</small></span></div>
+   <div className="floating-rates-note"><Clock3 size={12}/><span>Сводные курсы<small>Frankfurter · за 1 EUR · D1</small></span></div>
   </div>
   <button ref={trigger} type="button" className={`floating-rates-trigger ${panelOpen?'is-concealed':''}`} onClick={open} aria-expanded={panelOpen} aria-controls={panelId} aria-hidden={panelOpen} inert={panelOpen}>
    <span className="floating-rates-trigger-icon"><Coins size={18}/></span><span>Курсы</span><ArrowUpRight size={13}/>
