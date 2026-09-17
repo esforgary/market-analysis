@@ -55,3 +55,12 @@ button svg,a svg{transition:transform 300ms var(--ease-fluid),opacity 220ms var(
 .asset-row{cursor:pointer}.asset-panel .asset-row:has(:focus-visible){background:var(--green-soft);box-shadow:inset 3px 0 var(--accent-green)}.asset-row .asset-name{min-height:44px;width:100%;text-align:left}.asset-row .sector-label{cursor:inherit}.asset-row .icon-btn,.asset-row .chart-link{min-width:44px;min-height:44px}.selected-asset-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}.security-chart{scroll-margin-top:88px}.topbar-right>.icon-btn{min-width:40px;min-height:40px}
 @media(min-width:1700px){.content{max-width:min(1440px,calc(100vw - 432px))}}
 @media(max-width:760px){.security-chart{scroll-margin-top:16px}.topbar-right{gap:5px}.topbar-right .avatar{display:none}.selected-asset-actions{gap:2px}}
+
+.source-health-breakdown{margin:0 24px 20px;padding:20px 24px;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:20px;background:color-mix(in srgb,var(--text) 3%,transparent)}
+.source-health-breakdown h3{margin:0 0 12px;font-size:16px}
+.source-health-breakdown p{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0;font-size:13px}
+.source-health-breakdown p span,.source-health-breakdown small{color:var(--muted-foreground);font-size:12px;line-height:1.65}
+.source-health-breakdown small{display:block;margin-top:12px}
+.source-error-detail{font-size:12px;line-height:1.7;color:var(--muted-foreground)}
+.source-error-detail b{color:var(--text);font-weight:500}
+@media(max-width:600px){.source-health-breakdown{margin:0 16px 16px;padding:16px}.source-health-breakdown p{align-items:flex-start;flex-direction:column;gap:4px}}
