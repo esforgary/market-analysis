@@ -1,0 +1,334 @@
+/* Liquid glass: saturated cyan, electric blue and violet light over a navy canvas.
+   The existing layout, hit areas and motion are preserved. */
+html:root {
+  --bg: #edf2ff;
+  --surface: #f8faff;
+  --surface-2: #e5edff;
+  --surface-3: #d7e4ff;
+  --text: #13234a;
+  --soft: #42587e;
+  --muted-foreground: #627397;
+  --line: #648adf2c;
+  --accent-green: #007f9c;
+  --green-soft: #03bddd13;
+  --purple: #8542d5;
+  --purple-soft: #b867ed17;
+  --primary: #1976dd;
+  --primary-foreground: #fff;
+  --ring: #04b8de;
+  --glass-cyan: #29f4ef;
+  --glass-blue: #5085ff;
+  --glass-violet: #b967ff;
+  --glass-pink: #f167f8;
+  --glass-glow: #348bfd18;
+  --glass-edge: #73a9f655;
+  --material-card: radial-gradient(ellipse at 0 0, #42e7ef14, transparent 57%), radial-gradient(ellipse at 100% 100%, #c870ff14, transparent 62%), linear-gradient(145deg, #ffffffee, #f2f6fff2 58%, #edf0fff0);
+  --material-rim: inset 0 1px 2px #fff, inset 1px 0 1px #fff9, inset 0 -1px 2px #9caeee22;
+  --material-shadow: 0 18px 34px -23px #355ac565, 0 4px 12px -5px #254a991c;
+  --material-control: linear-gradient(145deg, #ffffffef, #e5edffff 70%, #dce8ff);
+  --material-inset: inset 0 2px 5px #345da211, 0 1px #fff;
+}
+html:root[data-theme="dark"] {
+  --bg: #070c18;
+  --surface: #111a30;
+  --surface-2: #182644;
+  --surface-3: #23375d;
+  --text: #f1f6ff;
+  --soft: #c0d1ef;
+  --muted-foreground: #96add2;
+  --line: #7aabef24;
+  --accent-green: #29f4ef;
+  --green-soft: #29d8ef13;
+  --purple: #cf91ff;
+  --purple-soft: #b967ff1c;
+  --primary: #29ddec;
+  --primary-foreground: #07182c;
+  --ring: #29f4ef;
+  --glass-glow: #20dff121;
+  --glass-edge: #78c9ff4a;
+  --material-card: radial-gradient(ellipse at 0 0, #21e7f014, transparent 58%), radial-gradient(ellipse at 100% 100%, #c053ff15, transparent 60%), linear-gradient(145deg, #213254ed, #14203ae8 44%, #10182dee);
+  --material-rim: inset 0 1px 2px #d2eaff3d, inset 1px 0 1px #a4eaff12, inset 0 -1px 2px #bc80ff19;
+  --material-shadow: 0 22px 44px -23px #000000b3, 0 4px 14px -4px #0000006b;
+  --material-control: linear-gradient(145deg, #5474b047, #21345a 48%, #142344);
+  --material-inset: inset 0 2px 6px #0000004f, 0 1px #92b9ff12;
+}
+/* Market direction stays independent of the decorative palette. */
+html:root { --market-positive: #28e22f; --market-negative: #e32636; }
+html:root[data-theme="dark"] { --market-positive-text: #28e22f; --market-negative-text: #e32636; }
+html:root:not([data-theme="dark"]) { --market-positive-text: #137a1a; --market-negative-text: #c52030; }
+html:root body {
+  background: radial-gradient(ellipse at 5% 2%, #326fff08, transparent 33%), radial-gradient(ellipse at 95% 22%, #cd53fb07, transparent 35%), var(--bg);
+}
+html:root[data-theme="dark"] body {
+  background: radial-gradient(ellipse at 5% 2%, #154eff10, transparent 33%), radial-gradient(ellipse at 95% 22%, #ad39fa0c, transparent 35%), var(--bg);
+}
+
+/* Navigation and the primary controls catch cyan light along their top edges. */
+html:root .app-shell .sidebar {
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  border-color: var(--glass-edge);
+  box-shadow: inset 0 -1px #66e6ff0a, 0 7px 30px #07112918;
+}
+html:root .app-shell .sidebar::before {
+  opacity: .75;
+  background: radial-gradient(ellipse at 42% 0, #21f4e322, transparent 36%), radial-gradient(ellipse at 82% 0, #c250fb20, transparent 33%);
+}
+html:root .app-shell .sidebar .brand-icon {
+  background: linear-gradient(135deg, #21f4e3, #5085ff 52%, #d45eff);
+  border: 1px solid #cbeaff58;
+  box-shadow: inset 0 1px #fff7, 0 0 18px #5085ff45;
+}
+html:root .app-shell .sidebar .brand > span:last-child { color: var(--purple); }
+html:root .app-shell .sidebar .nav-item.active,
+html:root .app-shell .sidebar .nav-item.active:hover {
+  color: var(--text);
+  background: radial-gradient(ellipse at 0 0, #21f4e31d, transparent 75%), radial-gradient(ellipse at 100% 100%, #ad62ff20, transparent 75%), var(--material-control);
+  box-shadow: inset 0 1px #9bf5ff61, inset 0 -1px #ad78ff37, 0 0 16px #5085ff16, 0 5px 11px #00000018;
+}
+html:root .app-shell .sidebar .theme-switch { background: color-mix(in srgb, var(--bg) 80%, transparent); border-color: var(--line); }
+html:root .app-shell .sidebar .theme-switch button[aria-pressed="true"] {
+  background: var(--material-control); color: var(--accent-green);
+  box-shadow: inset 0 1px #bde9ff42, inset 0 -1px #806bf54d, 0 0 12px #5085ff1c;
+}
+html:root .app-shell :is(.topbar .icon-btn, .notification-bell) {
+  background: var(--material-control); color: var(--soft); border-color: var(--line);
+  box-shadow: var(--material-rim), 0 3px 8px #00112612;
+}
+html:root .app-shell .notification-bell[data-unread="true"] { color: var(--accent-green); box-shadow: var(--material-rim), 0 0 17px #29f4ef19; }
+html:root .app-shell .notification-badge { background: linear-gradient(135deg, #9857f3, #e365ef); border-color: var(--surface); }
+html:root .app-shell .topbar .avatar { background: linear-gradient(145deg, #26e3ef19, #935ffe28); color: var(--purple); border-color: #c27eff3a; }
+html:root .app-shell .btn.primary,
+html:root .app-shell .idea-cta.btn.primary {
+  color: #061a33;
+  background: linear-gradient(115deg, #29f4ef 0%, #46caff 47%, #7299ff 100%);
+  border: 1px solid #bcf6ff88;
+  box-shadow: inset 0 1px 1px #fff9, inset 0 -1px #376dda2e, 0 5px 23px #258bff3b, 0 0 15px #29f4ef1f;
+}
+html:root .app-shell .hero-explore,
+html:root .app-shell .focus-card > button {
+  color: var(--text);
+  background: radial-gradient(ellipse at 0 0, #29f4ef21, transparent 80%), radial-gradient(ellipse at 100% 100%, #d45eff18, transparent 80%), var(--material-control);
+  border-color: var(--glass-edge);
+  box-shadow: inset 0 1px 1px #cceaff52, inset 0 -1px #866cfe38, 0 4px 16px #377aff1b;
+}
+html:root .app-shell .hero-explore svg,
+html:root .app-shell .focus-card > button svg { color: var(--accent-green); filter: drop-shadow(0 0 5px #29f4ef35); }
+
+/* Hero glass is deliberately more saturated than the long-form reading panels. */
+html:root .app-shell .hero-copy h1 em {
+  background-image: linear-gradient(105deg, #29f4ef 0%, #70b6ff 47%, #df89ff 96%);
+}
+html:root:not([data-theme="dark"]) .app-shell .hero-copy h1 em { background-image: linear-gradient(105deg, #007eac, #4861d5 52%, #a147cb); }
+html:root .app-shell .hero-label .dot { background: var(--accent-green); box-shadow: 0 0 12px #29f4ef80; }
+html:root .app-shell .hero-glass,
+html:root .app-shell .hero-glass:nth-child(2),
+html:root .app-shell .hero-glass:nth-child(3) {
+  --shortcut-light: #29f4ef;
+  border-color: color-mix(in srgb, var(--shortcut-light) 32%, var(--line));
+  background: radial-gradient(ellipse at 1% 100%, color-mix(in srgb, var(--shortcut-light) 13%, transparent), transparent 67%), linear-gradient(128deg, #ffffff0e, #ffffff00 43%), var(--material-card);
+  box-shadow: inset 0 1px 1px #d4edff57, inset 1px 0 2px #adeeff13, inset 0 -1px 2px color-mix(in srgb, var(--shortcut-light) 22%, transparent), 0 11px 27px -17px color-mix(in srgb, var(--shortcut-light) 46%, transparent), var(--material-shadow);
+  backdrop-filter: blur(24px) saturate(1.3);
+}
+html:root .app-shell .hero-glass:nth-child(2) { --shortcut-light: #d45eff; }
+html:root .app-shell .hero-glass:nth-child(3) { --shortcut-light: #5085ff; }
+html:root .app-shell .hero-glass.hero-source { --shortcut-light: #a379ff; }
+html:root .app-shell .hero-icon,
+html:root .app-shell .hero-icon.mint,
+html:root .app-shell .hero-icon.violet {
+  --icon-light: #29f4ef;
+  color: var(--icon-light);
+  border-color: color-mix(in srgb, var(--icon-light) 40%, transparent);
+  background: radial-gradient(ellipse at 50% 115%, color-mix(in srgb, var(--icon-light) 60%, transparent), transparent 73%), linear-gradient(145deg, #84b5ff19, #1b295454);
+  box-shadow: inset 0 1px 1px #edfcff61, inset 0 -1px #77ddff2e, 0 5px 15px color-mix(in srgb, var(--icon-light) 22%, transparent);
+}
+html:root .app-shell .hero-icon.violet { --icon-light: #ee79ff; }
+html:root .app-shell .hero-icon.mint { --icon-light: #739dff; }
+html:root .app-shell .hero-source .hero-icon { --icon-light: #c782ff; }
+html:root .app-shell .hero-icon svg { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--icon-light) 64%, transparent)); }
+html:root:not([data-theme="dark"]) .app-shell .hero-icon { color: #00849d; }
+html:root:not([data-theme="dark"]) .app-shell .hero-icon.mint { color: #3466dc; }
+html:root:not([data-theme="dark"]) .app-shell .hero-icon.violet,
+html:root:not([data-theme="dark"]) .app-shell .hero-source .hero-icon { color: #9843c7; }
+html:root .app-shell .hero-metric {
+  background: radial-gradient(ellipse at 35% 105%, #5085ff22, transparent 75%), var(--material-card);
+  border-color: var(--glass-edge);
+  box-shadow: var(--material-rim), 0 9px 22px -18px #6f8eff78, var(--material-shadow);
+}
+html:root .app-shell .hero-metric strong { color: var(--text); }
+html:root[data-theme="dark"] .app-shell .hero-metric:first-child strong { color: #68f3f6; text-shadow: 0 0 18px #21cdeb28; }
+html:root[data-theme="dark"] .app-shell .hero-metric:nth-child(2) strong { color: #ddb2ff; text-shadow: 0 0 18px #b05dff25; }
+html:root[data-theme="dark"] .app-shell .hero-metric:nth-child(3) strong { color: #a7c8ff; text-shadow: 0 0 18px #5085ff35; }
+html:root .app-shell .hero-metric .metric-dot.cyan { color: #29f4ef; background: currentColor; }
+html:root .app-shell .hero-metric .metric-dot.violet { color: #e17bff; background: currentColor; }
+html:root .app-shell .hero-metric .metric-dot.mint { color: #6799ff; background: currentColor; }
+
+/* Large glass panels keep a quiet centre for tables, charts and long text. */
+html:root .app-shell :is(.panel, .market-strip, .sources-directory) {
+  border-color: var(--glass-edge);
+  background: var(--material-card);
+  box-shadow: var(--material-rim), var(--material-shadow);
+  backdrop-filter: blur(22px) saturate(1.2);
+}
+html:root .app-shell .market-strip .strip-label { background: linear-gradient(140deg, #29f4ef0b, #9467ff12); }
+html:root .app-shell .focus-card {
+  background: radial-gradient(ellipse at 95% 0, #d45eff36, transparent 64%), radial-gradient(ellipse at 5% 100%, #21cdeb25, transparent 65%), var(--material-card);
+  border-color: #ae83ef51;
+  box-shadow: inset 0 1px 2px #efcaff54, inset 0 -1px 1px #53dbe33b, 0 10px 30px -19px #b458e853, var(--material-shadow);
+}
+html:root .app-shell .focus-card::after { border-color: #be82ff57; box-shadow: 0 0 0 30px #ab62ff0c, 0 0 0 60px #ab62ff05; opacity: .6; }
+html:root .app-shell .focus-card .focus-star { color: #e487ff; filter: drop-shadow(0 0 10px #d45eff70); }
+html:root .app-shell .focus-card h2 em { color: var(--accent-green); }
+html:root .app-shell .focus-card .focus-stats,
+html:root .app-shell .focus-card .focus-stats > div:last-child { border-color: var(--line); }
+html:root .app-shell .focus-card .focus-stats strong { color: var(--text); }
+html:root .app-shell :is(.asset-panel, .news-panel, .sources-directory) .field-search {
+  background: color-mix(in srgb, var(--bg) 63%, var(--surface));
+  border-color: var(--line); box-shadow: var(--material-inset);
+}
+html:root .app-shell :is(.asset-panel, .news-panel, .sources-directory) .field-search:focus-within {
+  border-color: color-mix(in srgb, var(--accent-green) 60%, var(--line));
+  box-shadow: var(--material-inset), 0 0 0 3px #29d8ef10, 0 0 19px #297aef10;
+}
+html:root .app-shell :is(.asset-panel, .sources-directory) .filter-bar select {
+  background-color: var(--surface-2); border-color: var(--glass-edge);
+  box-shadow: inset 0 1px #b6d7ff1c, 0 3px 8px #06112b16;
+}
+html:root .app-shell .asset-panel .asset-row[data-selected="true"] {
+  background: linear-gradient(90deg, #29d8ef12, #a34cff06 75%, transparent);
+  box-shadow: inset 3px 0 var(--accent-green);
+}
+html:root .app-shell .asset-panel .asset-row:has(:focus-visible) { background-color: var(--green-soft); box-shadow: inset 3px 0 var(--accent-green); }
+html:root .app-shell .asset-panel .pagination .btn,
+html:root .app-shell .news-panel .news-tags button {
+  background: var(--material-control); border-color: var(--glass-edge);
+  box-shadow: var(--material-rim), 0 3px 10px #234dde13;
+}
+html:root .app-shell .news-panel .news-number {
+  color: var(--purple); background: radial-gradient(ellipse at 50% 110%, #c16afa2a, transparent 80%), var(--material-control);
+  border-color: #b079ec3b; box-shadow: inset 0 1px #d0b1ff33, 0 4px 10px #8040c313;
+}
+html:root .app-shell .news-panel .all-news { background: linear-gradient(0deg, #459bff08, transparent); }
+html:root .app-shell .source-summary-link {
+  background: linear-gradient(115deg, #29f4ef0c, #bd66ff0e), var(--surface);
+  border-color: var(--glass-edge); box-shadow: inset 0 1px #d0eaff1c;
+}
+html:root .app-shell .sources-directory .source-entry {
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  border-color: var(--line); box-shadow: inset 0 1px #a7ceff0e;
+}
+
+/* Saturated asset wells retain each company's recognizable SVG mark. */
+html:root .app-shell .asset-logo.asset-icon,
+html:root .app-shell .idea-asset-icon.asset-icon {
+  border-color: color-mix(in srgb, var(--asset-ink, #729dff) 44%, #8dafff28);
+  background: radial-gradient(ellipse at 50% 115%, color-mix(in srgb, var(--asset-ink, #729dff) 44%, transparent), transparent 71%), linear-gradient(145deg, #253e65, #101c38);
+  box-shadow: inset 0 1px 2px #e0eeff42, inset 0 -1px 2px #6988ff2b, 0 5px 13px #07112633, 0 0 11px color-mix(in srgb, var(--asset-ink, #729dff) 12%, transparent);
+}
+html:root .app-shell .asset-icon > rect:first-child { fill-opacity: .1; stroke-opacity: .32; }
+html:root .app-shell .idea-art-logo > .asset-icon { filter: drop-shadow(0 0 12px color-mix(in srgb, var(--asset-ink, #729dff) 36%, transparent)); }
+html:root:not([data-theme="dark"]) .app-shell .asset-logo.asset-icon,
+html:root:not([data-theme="dark"]) .app-shell .idea-asset-icon.asset-icon {
+  background: radial-gradient(ellipse at 50% 115%, color-mix(in srgb, var(--asset-ink, #729dff) 23%, transparent), transparent 71%), linear-gradient(145deg, #f9fcff, #e4edff);
+  box-shadow: inset 0 1px #fff, inset 0 -1px #aac5ff4d, 0 4px 11px #234c9920;
+}
+
+/* The radar becomes a luminous blue-violet glass stage rather than a green slab. */
+html:root .app-shell .ideas-banner {
+  color: #f2f6ff;
+  border-color: #a6b1ff70;
+  background: radial-gradient(ellipse at 0 0, #21e6ef55, transparent 53%), radial-gradient(ellipse at 100% 100%, #d34cfb58, transparent 57%), linear-gradient(130deg, #18365b, #172249 49%, #262052);
+  box-shadow: inset 0 1px 2px #d9edff78, inset 1px 0 2px #5ae8ff38, inset 0 -1px 2px #d690ff65, 0 20px 45px -20px #5244de55, 0 5px 20px #050c252b;
+}
+html:root .app-shell .ideas-banner::after { background: linear-gradient(140deg, #d9fcff14, transparent 33%, transparent 72%, #e5aaff0a); }
+html:root .app-shell .idea-label { color: #b9f4ff; }
+html:root .app-shell .idea-label > svg { color: #29f4ef; filter: drop-shadow(0 0 6px #29f4ef55); }
+html:root .app-shell .idea-curated {
+  color: #f0ccff; border-color: #dc91ff57;
+  background: linear-gradient(125deg, #b75aff1c, #e260fb24);
+  box-shadow: inset 0 1px #f8d7ff3b, 0 0 20px #c15df518;
+}
+html:root .app-shell .idea-symbol { color: #b9cdef; }
+html:root .app-shell .idea-reason { color: #d4e1fa; }
+html:root .app-shell .idea-evidence { color: #a5bfe7; }
+html:root .app-shell .idea-orbit { border-color: #88bbff26; box-shadow: inset 0 0 60px #5378ff12, 0 0 45px #507dff0a; }
+html:root .app-shell .orbit-inner { border-color: #d27eff36; }
+html:root .app-shell .idea-art-logo {
+  background: radial-gradient(ellipse at 15% 0, #29f4ef43, transparent 68%), radial-gradient(ellipse at 100% 100%, #d45eff40, transparent 70%), linear-gradient(145deg, #344b82de, #152445db);
+  border-color: #91cfff80;
+  box-shadow: inset 0 2px 3px #e2f5ff61, inset 1px 0 2px #54ebff59, inset 0 -2px 3px #ca87ff73, 0 24px 43px #00000066, 0 0 39px #518bff26;
+  backdrop-filter: blur(18px) saturate(1.5);
+}
+html:root .app-shell .idea-art-code {
+  color: #e5eeff; border-color: #b7b8ff73;
+  background: linear-gradient(125deg, #488ee152, #9b50de4d);
+  box-shadow: inset 0 1px #f3e0ff63, 0 7px 21px #06092f40, 0 0 22px #a052ea19;
+}
+html:root .app-shell .idea-art-caption { color: #bac8f2; }
+html:root .app-shell .idea-ambient > span { border-color: #bca5ff14; }
+html:root .app-shell .idea-bottom { border-color: #b2c7fc2b; }
+html:root .app-shell .idea-disclaimer { color: #b5c6e9; }
+html:root .app-shell .idea-bottom .idea-control {
+  color: #e2eaff; border-color: #a7bfff59;
+  background: linear-gradient(145deg, #aec8ff1f, #5978ca14);
+  box-shadow: inset 0 1px #e2efff3d, 0 3px 10px #050a252e;
+}
+html:root .app-shell .idea-dots button[aria-pressed="true"] > span { background: #29f4ef; box-shadow: 0 0 10px #29f4ef88; }
+html:root .app-shell .ideas-banner.news-radar .radar-coverage { color: #b5c8ed; border-color: #c2d4ff26; }
+html:root .app-shell .ideas-banner.news-radar .radar-coverage b { color: #f2f6ff; }
+html:root .app-shell .ideas-banner.news-radar .radar-coverage-window { color: #aac0e8; }
+html:root .app-shell .ideas-banner.news-radar .radar-story { color: #e2ebff; border-left-color: #a2d0ff55; }
+html:root .app-shell .ideas-banner.news-radar .radar-story-meta { color: #acc5eb; }
+html:root .app-shell .ideas-banner.news-radar .radar-story-meta b { color: #c4e9ff; }
+html:root:not([data-theme="dark"]) .app-shell .ideas-banner { box-shadow: inset 0 1px 2px #e8f5ff8a, inset 0 -1px #dc99ff8a, 0 20px 42px -22px #5e45bc77, 0 3px 12px #244d8b25; }
+
+/* Portalled windows and the floating utilities use the same blue glass. */
+html:root[data-theme="dark"] .meridian-dialog-content[data-slot="dialog-content"] {
+  background: radial-gradient(ellipse at 0 0, #22d6ef12, transparent 55%), radial-gradient(ellipse at 100% 100%, #c357ff12, transparent 60%), linear-gradient(135deg, #1d2c4cf5, #10182df7) !important;
+  border-color: #94baff57 !important;
+  box-shadow: inset 0 1px 2px #d4e6ff5e, inset 0 -1px 2px #c879ff2c, 0 28px 95px #0000009e, 0 0 35px #5085ff12;
+}
+html:root[data-theme="dark"] .meridian-dialog-fixed-header[data-slot="dialog-fixed-header"] { background: linear-gradient(135deg, #233858, #1a2342); }
+html:root:not([data-theme="dark"]) .meridian-dialog-content[data-slot="dialog-content"] { background: var(--material-card) !important; border-color: #a5bdff7a !important; box-shadow: var(--material-rim), 0 28px 85px #26449338; }
+html:root:not([data-theme="dark"]) .meridian-dialog-fixed-header[data-slot="dialog-fixed-header"] { background: linear-gradient(135deg, #f4fcff, #eeeaff); }
+html:root[data-theme="dark"] .floating-rates-panel,
+html:root[data-theme="dark"] .floating-rates-trigger,
+html:root[data-theme="dark"] .notification-toast {
+  background: radial-gradient(ellipse at 0 0, #29e5ef15, transparent 70%), linear-gradient(135deg, #233655f2, #14223ced);
+  border-color: #91bcff50;
+  box-shadow: inset 0 1px 2px #b7d8ff43, inset 0 -1px #b17fff2b, 0 15px 40px #00000059, 0 0 17px #5d74ec12;
+}
+html:root:not([data-theme="dark"]) .floating-rates-panel,
+html:root:not([data-theme="dark"]) .floating-rates-trigger,
+html:root:not([data-theme="dark"]) .notification-toast { background: var(--material-card); border-color: var(--glass-edge); box-shadow: var(--material-rim), var(--material-shadow); }
+html:root .notification-heading-icon,
+html:root .notification-toast-icon { background: linear-gradient(140deg, #c35aff20, #5189ff1a); color: var(--purple); border-color: #c584ff44; }
+html:root .app-shell .ambient-orbs { opacity: .35; filter: blur(19px) saturate(1.5); }
+html:root .app-shell .ambient-orbs > span { background: linear-gradient(135deg, #21f4e3, #3679ff 43%, #e652fa 96%); }
+html:root .app-shell .ambient-orbs > span:nth-child(2) { background: linear-gradient(125deg, #24d9ff, #565fff 43%, #d754ff); }
+html:root .app-shell .ambient-orbs > span:nth-child(3) { background: linear-gradient(155deg, #438dff, #a352ff 50%, #f167f8); }
+html:root:not([data-theme="dark"]) .app-shell .ambient-orbs { opacity: .19; filter: blur(25px) saturate(1.1); }
+
+@media (hover:hover) and (pointer:fine) {
+  html:root .app-shell .hero-glass:hover {
+    border-color: color-mix(in srgb, var(--shortcut-light) 67%, var(--line));
+    box-shadow: inset 0 1px 2px #e5f4ff73, inset 0 -1px 2px color-mix(in srgb, var(--shortcut-light) 35%, transparent), 0 0 28px -8px color-mix(in srgb, var(--shortcut-light) 21%, transparent), var(--material-shadow);
+  }
+  html:root .app-shell .btn.primary:hover,
+  html:root .app-shell .idea-cta.btn.primary:hover {
+    background: linear-gradient(115deg, #72fff7, #75d7ff 47%, #93b0ff);
+    box-shadow: inset 0 1px #fff, 0 5px 28px #258bff50, 0 0 19px #29f4ef2b;
+  }
+  html:root .app-shell .hero-explore:hover,
+  html:root .app-shell .focus-card > button:hover { border-color: #6dcafa9e; box-shadow: inset 0 1px #dbf8ff69, inset 0 -1px #b281ff4d, 0 5px 20px #398efa2b; }
+  html:root .app-shell .idea-bottom .idea-control:hover { background: linear-gradient(145deg, #bcdeff30, #bd76ff22); border-color: #acd8ff9c; }
+  html:root .app-shell .asset-panel .asset-row:hover { background-color: #428afa08; }
+  html:root .app-shell .ideas-banner.news-radar .radar-story:hover { color: #fff; background: #a4d9ff0a; border-left-color: #57ebff; }
+}
+@media (max-width:760px) {
+  html:root .app-shell .ambient-orbs { opacity: .25; filter: blur(20px) saturate(1.35); }
+  html:root .app-shell .hero-glass { backdrop-filter: blur(16px) saturate(1.2); }
+  html:root .app-shell .ideas-banner { box-shadow: inset 0 1px 2px #d9edff70, inset 0 -1px 2px #d690ff60, 0 13px 30px -18px #5244de60; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html:root .app-shell .ambient-orbs { opacity: .2; }
+}

@@ -12,9 +12,9 @@
     "start": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
-    "build:pages": "node --experimental-strip-types scripts/snapshot-news.mjs && vite build --config vite.pages.config.ts",
+    "build:pages": "node --experimental-strip-types scripts/snapshot-securities.mjs && node --experimental-strip-types scripts/snapshot-news.mjs && vite build --config vite.pages.config.ts",
     "dev:pages": "vite --config vite.pages.config.ts",
-    "test:market": "node --experimental-strip-types --test tests/market.test.mjs tests/notifications.test.mjs tests/currency-data.test.mjs tests/news-analysis.test.mjs tests/news-radar.test.mjs tests/news-collector.test.mjs"
+    "test:market": "node --experimental-strip-types --test tests/market.test.mjs tests/notifications.test.mjs tests/currency-data.test.mjs tests/news-analysis.test.mjs tests/news-radar.test.mjs tests/news-collector.test.mjs tests/security-data.test.mjs tests/security-window.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

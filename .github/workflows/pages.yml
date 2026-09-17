@@ -32,6 +32,12 @@ jobs:
             .translation-cache.json
           key: news-v5-${{ steps.news-cache-key.outputs.hour }}
           restore-keys: news-v5-
+      - name: Cached security history
+        uses: actions/cache@v4
+        with:
+          path: .securities-cache.json
+          key: securities-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: securities-v1-
       - run: npm run test:market
       - run: npm run build:pages
         env:

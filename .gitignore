@@ -49,3 +49,6 @@ next-env.d.ts
 /.news-cache.json
 /.model-cache/
 /.translation-cache.json
+
+/.securities-cache.json
+/public/data/securities/

@@ -7,7 +7,7 @@ const monograms: Record<string, [string, string]> = {
   DIS: ['D', '#9287e8'], JNJ: ['J&J', '#e25363'], LLY: ['L', '#ef5b64'], UNH: ['U', '#4d8fc9'],
   PFE: ['P', '#50a9e8'], XOM: ['XOM', '#e24a52'], CVX: ['C', '#428fcc'], ASML: ['ASML', '#7b82d6'],
   ALV: ['A', '#598ecf'], MC: ['LV', '#c3a569'], OR: ['L', '#c7a485'], TTE: ['TE', '#ed627c'],
-  NESN: ['N', '#bd9878'], ROG: ['R', '#598bea'], NOVN: ['N', '#e79943'], NOVO_B: ['N', '#7596d2'],
+  NESN: ['N', '#bd9878'], ROP: ['R', '#598bea'], NOVN: ['N', '#e79943'], NOVO_B: ['N', '#7596d2'],
   AZN: ['AZ', '#b982c1'], '9984': ['SB', '#b7c3d4'], '2330': ['TSMC', '#d46168'], '700': ['T', '#6a8bec'],
   '1211': ['BYD', '#e25b65'], '2222': ['SA', '#50b9b2'], BHP: ['BHP', '#e49056'], CBA: ['C', '#e4bb54'],
   RY: ['RBC', '#558fe1'], VALE: ['V', '#51af92'], PBR: ['BR', '#5aac6d'], MELI: ['M', '#dfc24c'],

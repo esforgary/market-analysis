@@ -1,0 +1,41 @@
+.security-plot{position:relative;isolation:isolate;width:100%;height:390px;min-height:300px;flex:1;overflow:hidden;color:var(--text,#edf2fa);background:transparent;border-radius:16px;font-variant-numeric:tabular-nums}
+.security-plot>svg{display:block;overflow:visible;touch-action:pan-y;outline:none;cursor:crosshair}
+.security-plot>svg:focus-visible{outline:1px solid #7e95c080;outline-offset:-3px;border-radius:14px}
+.security-grid-line{stroke:#abc2e614;stroke-width:1;stroke-dasharray:2 6}
+.security-axis-text{fill:#9aabc4;font-size:10px;font-family:inherit;font-weight:400;letter-spacing:0}
+.security-axis-currency{fill:#bac9df;font-size:9px;font-family:inherit;letter-spacing:.08em}
+.security-volume-divider{stroke:#adc4e614;stroke-width:1}
+.security-price-line{vector-effect:non-scaling-stroke}
+.security-crosshair>line{stroke:#b4c9e570;stroke-width:1;stroke-dasharray:3 5;pointer-events:none}
+.security-plot-tooltip{position:absolute;z-index:3;pointer-events:none;padding:14px 16px;border:1px solid #b4d3ff26;border-radius:17px;background:linear-gradient(145deg,#233147f5,#111c2ef5);box-shadow:inset 0 1px 0 #ffffff12,0 16px 40px #0005;backdrop-filter:blur(18px);color:#eff5ff}
+.security-tooltip-date{font-size:10px;line-height:1.6;color:#bdcbe0;margin-bottom:9px}
+.security-tooltip-date>span{font-size:8px;color:#7f93b1;white-space:nowrap}
+.security-plot-tooltip>strong{display:block;font-size:22px;font-weight:600;letter-spacing:-.035em;line-height:1.2;text-shadow:0 0 17px currentColor}
+.security-plot-tooltip>strong>span{font-size:10px;font-weight:400;letter-spacing:0;color:#bdcbe0;text-shadow:none}
+.security-plot-tooltip dl{margin:12px 0 0;display:grid;gap:5px}
+.security-plot-tooltip dl>div{display:flex;justify-content:space-between;gap:10px;font-size:10px}
+.security-plot-tooltip dt{color:#8fa3be}.security-plot-tooltip dd{margin:0;color:#e1eafa;font-weight:500}
+.security-plot-tooltip>small{display:block;border-top:1px solid #ffffff12;padding-top:8px;margin-top:9px;font-size:9px;color:#9daec6}
+.security-aggregation-note{position:absolute;bottom:36px;left:17px;max-width:calc(100% - 110px);padding:4px 8px;border:1px solid #90a9cc16;border-radius:20px;background:#101c2bd9;color:#879bb8;font-size:8px;line-height:1.4;pointer-events:none}
+.security-plot-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.security-plot-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;height:100%;padding:24px;text-align:center;color:#bdcce1;font-size:13px}
+.security-plot-empty small{color:#849bbd;font-size:11px;line-height:1.7}
+.security-plot[data-theme=light] .security-grid-line{stroke:#415c8020}
+.security-plot[data-theme=light] .security-axis-text{fill:#536883}
+.security-plot[data-theme=light] .security-axis-currency{fill:#536883}
+.security-plot[data-theme=light] .security-crosshair>line{stroke:#47638380}
+.security-plot[data-theme=light] .security-volume-divider{stroke:#415c8020}
+.security-plot[data-theme=light] .security-plot-tooltip{background:linear-gradient(145deg,#fffffffa,#eaf0f9f7);border-color:#5b7daa30;box-shadow:inset 0 1px 0 white,0 16px 40px #18294425;color:#1f324e}
+.security-plot[data-theme=light] .security-tooltip-date,.security-plot[data-theme=light] .security-plot-tooltip>strong>span{color:#52657f}
+.security-plot[data-theme=light] .security-plot-tooltip dt,.security-plot[data-theme=light] .security-tooltip-date>span{color:#697c97}
+.security-plot[data-theme=light] .security-plot-tooltip dd{color:#253958}
+.security-plot[data-theme=light] .security-aggregation-note{background:#edf3faf0;border-color:#56749b20;color:#5c6d84}
+.security-plot[data-theme=light] .security-plot-empty{color:#52657f}
+.native-chart-fullscreen .security-plot,.native-market-chart:fullscreen .security-plot{height:100%;min-height:300px}
+@media(max-width:600px){.security-plot{height:340px;min-height:300px;border-radius:12px}.security-plot-tooltip{padding:12px 14px;border-radius:14px}.security-plot-tooltip>strong{font-size:20px}.security-aggregation-note{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.security-plot *{transition:none!important;animation:none!important}}
+
+.security-plot-tooltip{animation:security-tooltip-enter 160ms ease-out}.security-series{animation:security-series-enter 240ms ease-out}
+@keyframes security-tooltip-enter{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@keyframes security-series-enter{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.security-plot-tooltip,.security-series{animation:none}}

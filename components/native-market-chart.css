@@ -1,0 +1,38 @@
+.native-market-chart{--terminal-canvas:#0b1428;--terminal-grid:#243355;--terminal-label:#a7b9d6;--terminal-edge:#688cc431}
+.app-shell .trading-wrap.native-market-chart{padding:0 24px 22px;margin-top:0}
+.native-quote-header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:12px 0 26px}
+.native-chart-eyebrow{font-size:10px;letter-spacing:.13em;color:var(--muted-foreground)}
+.native-quote-value{display:flex;align-items:baseline;gap:10px;margin:12px 0 8px;font-size:clamp(34px,4.2vw,54px);letter-spacing:-.055em;font-weight:580;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--text)}
+.native-quote-value>span{font-size:14px;letter-spacing:0;color:var(--muted-foreground);font-weight:450}
+.native-observation{font-size:10px;color:var(--muted-foreground);line-height:1.7}
+.native-period-change{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:5px 7px;text-align:right}
+.native-period-change>b{font-size:18px;font-weight:550;font-variant-numeric:tabular-nums}
+.native-period-change>span{flex-basis:100%;font-size:10px;color:var(--muted-foreground);margin-top:3px}
+.app-shell .native-market-chart .trading-toolbar{padding-bottom:16px}
+.app-shell .native-market-chart .trading-view-tabs{background:#07102199;border-color:#66bfff35;box-shadow:inset 0 2px 7px #0006,inset 0 1px #d9efff15}
+.app-shell .native-market-chart .trading-view-tabs button[aria-pressed=true]{background:linear-gradient(135deg,#2b6a9b88,#583c9955);border-color:#4ae8ef75;box-shadow:inset 0 1px #b2efff55,0 0 18px #29f4ef22;color:#e9feff}
+.app-shell .native-market-chart .trading-tool-actions button{background:linear-gradient(135deg,#263957dd,#182444);border-color:#789ddb35;box-shadow:inset 0 1px #d8e7ff2b,0 3px 9px #0003}
+.native-periods{display:flex;align-items:center;gap:4px;overflow-x:auto;overscroll-behavior-x:contain;min-width:0;max-width:100%;padding:5px;margin:0 0 14px;border:1px solid #6b8ab129;border-radius:16px;background:#08112488;scrollbar-width:thin;scrollbar-color:#687ea666 transparent}
+.native-periods button{flex:1 0 44px;min-width:44px;min-height:44px;padding:9px 8px;color:var(--muted-foreground);font-size:11px;font-weight:550;border:1px solid transparent;border-radius:11px;background:transparent;transition:color 220ms,background-color 220ms,border-color 220ms,box-shadow 250ms}
+.native-periods button[aria-pressed=true]{color:#061729;background:linear-gradient(125deg,#29f4ef,#68b9ff);border-color:#a3fcff77;box-shadow:0 0 18px #20daf747,inset 0 1px #fff8}
+.native-periods button:hover:not([aria-pressed=true]){background:#2d467066;color:var(--text);border-color:#5297bd44}
+.native-periods button:focus-visible{outline:2px solid #29f4ef;outline-offset:1px}
+.native-plot-stage{position:relative;min-height:370px;border-radius:24px;border:1px solid #6587ba38;background:radial-gradient(ellipse at 6% 0,#12527326,transparent 52%),radial-gradient(ellipse at 95% 98%,#62209d22,transparent 52%),linear-gradient(155deg,#101c32,#091020 72%);box-shadow:inset 0 1px #c7e1ff15,0 14px 38px -24px #070512;overflow:hidden}
+.native-chart-empty{min-height:370px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:15px;padding:34px;color:var(--muted-foreground)}
+.native-chart-empty>svg{color:#29f4ef;filter:drop-shadow(0 0 12px #29f4ef88)}
+.native-chart-empty h3{font-size:17px;color:var(--text);font-weight:550}.native-chart-empty p{max-width:370px;font-size:12px;line-height:1.8}
+.native-chart-notice{font-size:11px;line-height:1.8;padding:10px 13px;margin-bottom:12px;border-radius:12px;border:1px solid #cdb17a33;color:var(--soft);background:#d4a5450c}
+.native-data-footer{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;padding:18px 1px 14px;color:var(--muted-foreground);font-size:10px;line-height:1.8}
+.native-data-footer>div{display:flex;align-items:center;flex-wrap:wrap;gap:5px 14px}.native-data-footer a{display:inline-flex;gap:5px;align-items:center;color:var(--accent-green)}
+.native-data-footer .native-source-stale{color:#e7bc73}
+.native-chart-bottom{display:flex;justify-content:space-between;align-items:center;gap:18px;border-top:1px solid var(--line);padding-top:13px;font-size:10px;line-height:1.8;color:var(--muted-foreground)}
+.native-chart-bottom p{max-width:510px}.native-chart-bottom a{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;color:var(--soft);min-height:44px}
+.native-market-chart:fullscreen{padding:24px!important;overflow:auto;background:var(--bg);display:flex;flex-direction:column}.native-market-chart:fullscreen .native-plot-stage{flex:1;min-height:300px;display:flex}.native-market-chart:fullscreen .security-plot{width:100%;height:100%;min-height:300px;flex:1}
+.fx-external-chart{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:14px;color:var(--accent-green);font-size:11px;background:var(--material-control);box-shadow:var(--material-rim)}
+html:root:not([data-theme=dark]) .native-plot-stage{background:radial-gradient(ellipse at 0 0,#22d8ec17,transparent 60%),radial-gradient(ellipse at 100% 100%,#b057eb12,transparent 50%),#f9fbff;border-color:#5d7bbb33}
+html:root:not([data-theme=dark]) .native-periods{background:#dfe8f288;border-color:#8ba4cb44}
+html:root:not([data-theme=dark]) .native-market-chart .trading-view-tabs{background:#e4ebf5;box-shadow:inset 0 2px 6px #23456712;border-color:#8ba4cb44}
+html:root:not([data-theme=dark]) .native-market-chart .trading-view-tabs button[aria-pressed=true]{background:linear-gradient(125deg,#b7fff8,#d3ddff);color:#184254;box-shadow:inset 0 1px #fff,0 0 15px #29f4ef22}
+html:root:not([data-theme=dark]) .native-market-chart .trading-tool-actions button{background:linear-gradient(135deg,#fff,#e6eaff);border-color:#8ba4cb44;box-shadow:inset 0 1px #fff,0 3px 9px #7892af18}
+@media(max-width:760px){.app-shell .trading-wrap.native-market-chart{padding:0 14px 16px}.native-quote-header{align-items:flex-start;padding:8px 0 22px;gap:9px}.native-period-change>b{font-size:15px}.native-period-change>span{font-size:9px;max-width:100px}.native-chart-eyebrow{font-size:8px}.native-quote-value{font-size:36px}.native-observation{font-size:9px}.native-plot-stage{border-radius:19px;min-height:340px}.native-chart-bottom{align-items:flex-start;flex-direction:column;gap:4px}.native-data-footer{font-size:9px}.native-periods{gap:2px}.native-periods button{min-width:44px;flex-grow:0}.native-chart-empty{min-height:340px}.native-chart-bottom a{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.native-periods button{transition:none}}

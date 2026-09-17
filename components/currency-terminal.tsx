@@ -5,7 +5,6 @@ import {ArrowDownRight,ArrowLeftRight,ArrowUpRight,ChartNoAxesCombined,Globe2,Se
 import {majorCurrencies,currencyName} from '@/lib/market-catalog';
 import {fx,validateRates,withinPeriod,pct,displayRate,type Rate} from '@/lib/market-data';
 import {currencySource,formatRateDate,loadCurrencyPair} from '@/lib/currency-data';
-import TradingChart from './trading-chart';
 import CurrencyIcon from './currency-icon';
 import {forecast} from '@/lib/forecast';
 import './currency-terminal.css';
@@ -21,7 +20,7 @@ function marketDate(value:string,full=false){
  return formatRateDate(value,{day:'numeric',month:full?'long':'short',...(full?{year:'numeric' as const}:{})});
 }
 export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD'}:{theme:'light'|'dark';expanded?:boolean;initialQuote?:string}){
- const [base,setBase]=useState('EUR'),[quote,setQuote]=useState(initialQuote),[rates,setRates]=useState<Rate[]>([]),[history,setHistory]=useState<Rate[]>([]),[period,setPeriod]=useState(30),[mode,setMode]=useState('history'),[search,setSearch]=useState(''),[listMode,setListMode]=useState('major'),[error,setError]=useState(''),[catalogError,setCatalogError]=useState(''),[busy,setBusy]=useState(true),[checked,setChecked]=useState('');
+ const [base,setBase]=useState('EUR'),[quote,setQuote]=useState(initialQuote),[rates,setRates]=useState<Rate[]>([]),[history,setHistory]=useState<Rate[]>([]),[period,setPeriod]=useState(30),[search,setSearch]=useState(''),[listMode,setListMode]=useState('major'),[error,setError]=useState(''),[catalogError,setCatalogError]=useState(''),[busy,setBusy]=useState(true),[checked,setChecked]=useState('');
  const chartId=useId().replace(/[^a-zA-Z0-9_-]/g,'');
  const gradientId='fx-area-'+chartId,glowId='fx-glow-'+chartId;
  useEffect(()=>{
@@ -70,10 +69,7 @@ export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD
   <section className="panel currency-terminal" data-trend={falling?'down':'up'}>
    <div className="panel-header currency-panel-header">
     <div><div className="kicker">ВАЛЮТНЫЙ РЫНОК</div><h2>Курс в деталях</h2></div>
-    <div className="segmented fx-view-toggle" aria-label="Источник графика">
-     <button type="button" aria-pressed={mode==='history'} onClick={()=>setMode('history')}>История курса</button>
-     <button type="button" aria-pressed={mode==='exchange'} onClick={()=>setMode('exchange')}>Рыночный график <ArrowUpRight size={13}/></button>
-    </div>
+    <a className="fx-external-chart" href={`https://www.tradingview.com/chart/?symbol=FX_IDC%3A${base}${quote}`} target="_blank" rel="noopener noreferrer">TradingView <ExternalLink size={13}/></a>
    </div>
    <div className="fx-pair-workbench">
     <div className="fx-pair-controls">
@@ -89,10 +85,10 @@ export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD
       <select aria-label="Валюта котировки" value={quote} onChange={e=>selectPair(base,e.target.value)}>{available.filter(c=>c!==base).map(c=><option key={c} value={c}>{c}</option>)}</select>
      </label>
     </div>
-    {mode==='history'&&<div className="fx-period-tabs" aria-label="Период истории">{periods.map(item=><button type="button" key={item.days} title={item.name} aria-label={item.name} aria-pressed={period===item.days} onClick={()=>setPeriod(item.days)}>{item.label}</button>)}</div>}
+    <div className="fx-period-tabs" aria-label="Период истории">{periods.map(item=><button type="button" key={item.days} title={item.name} aria-label={item.name} aria-pressed={period===item.days} onClick={()=>setPeriod(item.days)}>{item.label}</button>)}</div>
    </div>
-   <div className="currency-mode-view" key={mode}>
-    {mode==='exchange'?<TradingChart symbol={'FX_IDC:'+base+quote} theme={theme}/>:<>
+   <div className="currency-mode-view">
+    <>
      <div className="fx-quote-header">
       <div className="fx-quote-main">
        <div className="fx-quote-label">1 {base}<span> / </span>{quote}</div>
@@ -119,10 +115,11 @@ export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD
            <stop offset="55%" stopColor={chartColor} stopOpacity={.065}/>
            <stop offset="100%" stopColor={chartColor} stopOpacity={0}/>
           </linearGradient>
-          <filter id={glowId} x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-           <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="glow"/>
-           <feComponentTransfer in="glow" result="softGlow"><feFuncA type="linear" slope=".5"/></feComponentTransfer>
-           <feMerge><feMergeNode in="softGlow"/><feMergeNode in="SourceGraphic"/></feMerge>
+          <filter id={glowId} x="-32" y="-32" width="2000" height="480" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+           <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="wide"/>
+           <feComponentTransfer in="wide" result="halo"><feFuncA type="linear" slope="1.8"/></feComponentTransfer>
+           <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="near"/>
+           <feMerge><feMergeNode in="halo"/><feMergeNode in="near"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
          </defs>
          <CartesianGrid stroke="var(--line)" vertical={false} strokeDasharray="2 7"/>
@@ -139,7 +136,7 @@ export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD
            </div>;
           }}/>
          <Area type="monotone" dataKey="rate" fill={'url(#'+gradientId+')'} stroke="none" activeDot={false} tooltipType="none" isAnimationActive={false}/>
-         <Line type="monotone" dataKey="rate" name={base+'/'+quote} stroke={chartColor} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" filter={'url(#'+glowId+')'} dot={false} activeDot={{r:5,stroke:'var(--surface-2)',strokeWidth:2,fill:chartColor}} isAnimationActive={false}/>
+         <Line type="monotone" dataKey="rate" name={base+'/'+quote} stroke={chartColor} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" filter={'url(#'+glowId+')'} dot={false} activeDot={{r:5,stroke:'var(--surface-2)',strokeWidth:2,fill:chartColor}} isAnimationActive={false}/>
         </ComposedChart>
        </ResponsiveContainer>:<div className="empty fx-chart-empty"><ChartNoAxesCombined size={30}/><h3>{busy?'Загружаем историю…':'История недоступна'}</h3><p>{busy?'Получаем данные источника.':'Выберите другую валютную пару. Запрос повторится автоматически.'}</p></div>}
       </div>
@@ -148,7 +145,7 @@ export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD
       <div className="fx-source-main"><a href={source.url} title={source.description} target="_blank" rel="noopener noreferrer">{source.label} <ExternalLink size={11} aria-hidden="true"/></a><span><Clock3 size={11} aria-hidden="true"/> Дневные данные</span></div>
       <div className="fx-check-status"><span className={busy?'dot amber':'dot'} aria-hidden="true"/><span>{busy&&!checked?'Получаем данные':checked?'Проверено '+checked:'Ожидание проверки'}</span><span className="fx-check-interval"> · каждые 5 секунд</span></div>
      </div>
-    </>}
+    </>
    </div>
   </section>
   {expanded&&<>
