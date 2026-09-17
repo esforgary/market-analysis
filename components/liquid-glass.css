@@ -332,3 +332,10 @@ html:root:not([data-theme="dark"]) .app-shell .ambient-orbs { opacity: .19; filt
 @media (prefers-reduced-motion:reduce) {
   html:root .app-shell .ambient-orbs { opacity: .2; }
 }
+
+/* Fixed icon, label and arrow columns for the radar list. */
+html:root .app-shell .pulse-panel .radar-row{display:grid;grid-template-columns:42px minmax(0,1fr) 16px;align-items:center;gap:14px;padding:14px 24px;text-align:left}
+html:root .app-shell .pulse-panel .radar-row>.asset-logo{width:42px;height:42px;margin:0}
+html:root .app-shell .pulse-panel .radar-row>span{min-width:0}
+html:root .app-shell .pulse-panel .radar-row small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html:root .app-shell .pulse-panel .radar-row>svg:last-child{margin:0;justify-self:end}

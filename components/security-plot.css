@@ -39,3 +39,9 @@
 @keyframes security-tooltip-enter{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
 @keyframes security-series-enter{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.security-plot-tooltip,.security-series{animation:none}}
+
+.security-plot,.security-plot>svg,.security-plot>svg *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.security-scale-notes{position:absolute;bottom:8px;left:16px;right:16px;display:flex;align-items:center;flex-wrap:wrap;gap:3px 12px;color:#8296b3;font-size:8px;line-height:1.4;pointer-events:none;letter-spacing:0}
+.security-scale-notes>span+span{opacity:.85}
+.security-plot[data-theme=light] .security-scale-notes{color:#60728d}
+@media(max-width:600px){.security-scale-notes{font-size:7px;gap:3px 8px}}

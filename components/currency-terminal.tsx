@@ -6,6 +6,7 @@ import {majorCurrencies,currencyName} from '@/lib/market-catalog';
 import {fx,validateRates,withinPeriod,pct,displayRate,type Rate} from '@/lib/market-data';
 import {currencySource,formatRateDate,loadCurrencyPair} from '@/lib/currency-data';
 import CurrencyIcon from './currency-icon';
+import MarketSelect from './market-select';
 import {forecast} from '@/lib/forecast';
 import './currency-terminal.css';
 
@@ -73,17 +74,9 @@ export default function CurrencyTerminal({theme,expanded=false,initialQuote='USD
    </div>
    <div className="fx-pair-workbench">
     <div className="fx-pair-controls">
-     <label className="fx-pair-select">
-      <span className="fx-select-icon"><CurrencyIcon code={base}/></span>
-      <span className="sr-only">Базовая валюта</span>
-      <select aria-label="Базовая валюта" value={base} onChange={e=>selectPair(e.target.value,quote)}>{available.map(c=><option key={c} value={c}>{c}</option>)}</select>
-     </label>
+     <MarketSelect kind="currency" label="Базовая валюта" value={base} onValueChange={value=>selectPair(value,quote)} options={available.map(c=>({value:c,label:c,description:currencyName(c),icon:<CurrencyIcon code={c}/>}))}/>
      <button type="button" className="fx-swap-button" aria-label="Поменять валюты местами" onClick={()=>{setBase(quote);setQuote(base)}}><ArrowLeftRight size={16}/></button>
-     <label className="fx-pair-select">
-      <span className="fx-select-icon"><CurrencyIcon code={quote}/></span>
-      <span className="sr-only">Валюта котировки</span>
-      <select aria-label="Валюта котировки" value={quote} onChange={e=>selectPair(base,e.target.value)}>{available.filter(c=>c!==base).map(c=><option key={c} value={c}>{c}</option>)}</select>
-     </label>
+     <MarketSelect kind="currency" label="Валюта котировки" value={quote} onValueChange={value=>selectPair(base,value)} options={available.filter(c=>c!==base).map(c=>({value:c,label:c,description:currencyName(c),icon:<CurrencyIcon code={c}/>}))}/>
     </div>
     <div className="fx-period-tabs" aria-label="Период истории">{periods.map(item=><button type="button" key={item.days} title={item.name} aria-label={item.name} aria-pressed={period===item.days} onClick={()=>setPeriod(item.days)}>{item.label}</button>)}</div>
    </div>
